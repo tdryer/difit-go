@@ -8,6 +8,8 @@ It is a one-time fork of difit v5.0.12. The CLI flags, HTTP API, and UI match
 that release (see [Differences from difit](#differences-from-difit)); there is
 no npm package or VS Code extension.
 
+This port was largely AI-generated. Use at your own risk.
+
 ## Install
 
 Download an archive for your platform (Linux, macOS, Windows; amd64 and
