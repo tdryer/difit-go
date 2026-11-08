@@ -1,7 +1,8 @@
-# difit → Go port plan
+# difit-go plan
 
 Goal: replace difit's Node runtime (CLI + Express server) with a single,
-statically linked Go binary that embeds the web UI. Behavior, HTTP API, and CLI
+statically linked Go binary named `difit` that embeds the web UI. The project
+is `difit-go`, a one-time fork of difit v5.0.12; it does not track upstream. Behavior, HTTP API, and CLI
 surface stay compatible with difit v5.0.12 (`difit/`).
 
 ## Scope
@@ -13,7 +14,7 @@ surface stay compatible with difit v5.0.12 (`difit/`).
 | `src/utils` used by the server           | Port to Go; TS copy stays for the client                                       |
 | `src/client` (React UI)                  | **Keep as-is.** Build with Vite, embed the output with `go:embed`              |
 | `src/site` (GitHub Pages demo)           | Out of scope; stays TS-only                                                     |
-| `packages/vscode`                        | Out of scope for v1 (it forks the Node server); revisit once the binary exists |
+| `packages/vscode`                        | Dropped                                                                        |
 | `scripts/` perf tooling                  | Out of scope; possibly rewrite later against the Go server                     |
 
 Rewriting the UI is not worth it: it is the bulk of the code, has no Node
@@ -25,7 +26,7 @@ PATH (same as today), and `gh` for `--pr`.
 
 ```
 difit-go/
-  go.mod                      module github.com/<owner>/difit-go
+  go.mod                      module difit-go (rename once a remote exists)
   cmd/difit/main.go           entrypoint
   internal/
     cli/                      flag parsing, arg resolution, stdin, untracked prompt, background, `comment` subcommand
@@ -46,9 +47,9 @@ difit-go/
   .goreleaser.yaml
 ```
 
-`difit/` stays as the read-only upstream reference until the port is done, then
-gets removed (or kept as a git subtree/remote for pulling upstream UI changes —
-see open questions).
+`difit/` stays as a read-only reference (and the Node side of the conformance
+harness) until the port is done, then gets removed. The client is moved into
+`web/` and edited freely from then on.
 
 ## Technical decisions
 
@@ -125,9 +126,7 @@ the TS stays for the client. To stop drift:
 
 - goreleaser: linux/darwin/windows × amd64/arm64, `CGO_ENABLED=0`, `-trimpath
   -s -w`. Before the build hook: `pnpm -C web install --frozen-lockfile && pnpm -C web build`.
-- Artifacts: tarballs/zips + checksums, GitHub Release. Optional later:
-  Homebrew tap, and an npm package that ships the platform binaries
-  (esbuild-style optional deps) so `npx difit` keeps working.
+- Artifacts: tarballs/zips + checksums, GitHub Release. No npm wrapper.
 - Plain `go build ./cmd/difit` without the web build should still compile: a
   checked-in placeholder `internal/web/dist/index.html` says "UI not built,
   run `make web`".
@@ -151,14 +150,10 @@ the TS stays for the client. To stop drift:
    invalidation, `commentsChanged` events. ✅ watcher tests + E2E reload.
 6. **Release** — goreleaser, cross-platform smoke on Linux/macOS/Windows CI
    runners (paths, editor spawn, browser open, background detach), README.
-7. **Follow-ups (optional)** — VS Code extension spawning the Go binary,
-   npm wrapper package, site-data export via the binary, perf benchmarks.
+7. **Follow-ups (optional)** — site-data export via the binary, perf benchmarks.
 
-## Open questions
+## Decisions
 
-1. **Upstream tracking:** is this a one-time fork, or should we keep pulling
-   upstream difit UI changes? If we keep pulling, keep `web/` byte-identical to
-   upstream `src/client` and sync with a script; otherwise just move it.
-2. **Module path / binary name:** `difit` (conflicts with the npm binary if both
-   are installed) or something like `difit-go`?
-3. **VS Code extension and npm wrapper:** needed, or out of scope?
+- One-time fork: no upstream syncing; `web/` diverges freely.
+- Binary is `difit`; project/repo is `difit-go`.
+- No VS Code extension, no npm wrapper.
