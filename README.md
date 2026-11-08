@@ -69,23 +69,29 @@ Requires Go and, to build the UI, Node.js 22+ with pnpm.
 make all          # build web/ into internal/web/assets/dist, then bin/difit
 make test         # Go tests + web (vitest) tests
 make check        # go vet, gofmt, oxlint, oxfmt
-make e2e          # Playwright smoke test against bin/difit (needs playwright)
-make conformance  # compare the API with upstream difit (needs DIFIT_REFERENCE)
+make e2e          # Playwright smoke tests against bin/difit (needs playwright)
 make release-snapshot  # goreleaser build of all platforms into dist/
 ```
 
 `go build ./cmd/difit` works without Node, but the binary then serves a
 placeholder page instead of the UI.
 
-`make conformance` runs upstream difit's Node server and the Go binary on the
-same fixture repository and compares every API response. It needs a built
-checkout of difit v5.0.12, by default in `difit/`:
+`make test` includes a conformance test that replays scenarios (every diff
+mode, stdin, `--pr`, comments, settings, and the watch event stream) against
+the Go binary and compares each response with one recorded from upstream
+difit v5.0.12's Node server, in `internal/conformance/testdata`. To compare
+against the live Node server, or to record new scenarios, build upstream
+difit in `difit/`:
 
 ```sh
 git clone --branch v5.0.12 https://github.com/yoshiko-pg/difit
 (cd difit && pnpm install && ./node_modules/.bin/tsc -p tsconfig.cli.json && ./node_modules/.bin/vite build)
-make conformance
+make conformance         # run both servers side by side
+make conformance-update  # re-record testdata from the Node server
 ```
+
+Once difit-go changes behavior on purpose, edit the recorded response by hand
+instead.
 
 Releases are built by goreleaser when a `v*` tag is pushed.
 
@@ -95,8 +101,8 @@ Releases are built by goreleaser when a `v*` tag is pushed.
 - `internal/` — Go CLI, server, git diff parsing, watcher, and embedded assets
 - `web/` — React client (Vite), embedded into the binary at build time
 - `testdata/golden` — fixtures shared by the Go and TypeScript tests
-- `e2e/` — Playwright smoke test
-- `difit/` — upstream TypeScript source, used locally as the conformance reference (gitignored)
+- `internal/conformance` — API conformance test and responses recorded from upstream difit
+- `e2e/` — Playwright smoke tests
 
 ## License
 

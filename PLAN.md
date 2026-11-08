@@ -48,9 +48,11 @@ difit-go/
   .goreleaser.yaml
 ```
 
-`difit/` stays as a read-only reference (and the Node side of the conformance
-harness) until the port is done, then gets removed. The client is moved into
-`web/` and edited freely from then on.
+`difit/` was a read-only reference (and the Node side of the conformance
+harness) during the port. It has been removed; the conformance test now
+replays responses recorded from it, and a fresh upstream checkout in `difit/`
+is needed only to record new scenarios. The client lives in `web/` and is
+edited freely.
 
 ## Technical decisions
 
@@ -116,12 +118,16 @@ the TS stays for the client. To stop drift:
    the Node server (`difit/dist/cli`) and the Go binary on the same fixture
    repos and scenarios (working/staged/./commit/range/merge-base/stdin/
    ignoreWhitespace/context/renames/binary/images/generated files/untracked),
-   hits every endpoint, and diffs the normalized JSON. It runs in CI until the Node
-   version is retired.
+   hits every endpoint, and diffs the normalized JSON. It also compares the
+   `/api/watch` event stream per diff mode and `--pr` imports through a fake
+   `gh`. The Node responses are recorded in `internal/conformance/testdata`,
+   so `go test` replays them on every platform without Node.
 3. **Client tests:** existing vitest suite for `web/` runs unchanged.
 4. **E2E smoke:** Playwright loads the UI from the Go binary, checks that
-   files render, adds a comment, reloads after a file edit (watcher),
-   closes the tab, and checks the process exits and prints the comment.
+   files render, adds comments from the UI and the CLI, refreshes after a
+   commit and a working-tree edit (watcher), answers the untracked-files
+   prompt, checks that `--background` outlives the browser, and checks that
+   closing the tab makes the process exit and print the comments.
 
 ## Distribution
 
