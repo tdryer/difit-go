@@ -26,6 +26,7 @@ func New(t testing.TB) *Repo {
 	r.Git("config", "user.name", "Test")
 	r.Git("config", "user.email", "test@example.com")
 	r.Git("config", "commit.gpgsign", "false")
+	r.Git("config", "core.autocrlf", "false")
 	return r
 }
 

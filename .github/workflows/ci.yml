@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  test:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,6 +22,69 @@ jobs:
           cache: pnpm
           cache-dependency-path: web/pnpm-lock.yaml
       - run: make check
-      - run: make test
-      - run: make web build
+      - run: make test-web
+
+  # Go tests on every release platform: paths, process handling, editor
+  # spawn, and background detach differ between them.
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - run: go test ./...
+      - run: go build -o bin/ ./cmd/difit
       - run: ./bin/difit --version
+
+  # Compares every API response with upstream difit v5.0.12's Node server.
+  conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: yoshiko-pg/difit
+          ref: v5.0.12
+          path: difit
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - uses: pnpm/action-setup@v4
+        with:
+          package_json_file: difit/package.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Build upstream difit
+        working-directory: difit
+        run: |
+          pnpm install --frozen-lockfile
+          ./node_modules/.bin/tsc --project tsconfig.cli.json
+          ./node_modules/.bin/vite build
+      - run: make conformance
+
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - uses: pnpm/action-setup@v4
+        with:
+          package_json_file: web/package.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: web/pnpm-lock.yaml
+      - name: Install Playwright
+        run: |
+          npm install --global playwright@1.64.1
+          playwright install --with-deps chromium
+      - run: NODE_PATH="$(npm root -g)" make e2e

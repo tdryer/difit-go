@@ -5,3 +5,4 @@
 /internal/web/assets/dist/
 node_modules/
 *.tsbuildinfo
+/dist/

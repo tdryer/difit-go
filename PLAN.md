@@ -80,10 +80,10 @@ harness) until the port is done, then gets removed. The client is moved into
   `index.html` fallback for `/`. `DIFIT_DEV=1` serves nothing (Vite dev server
   proxies `/api` to the Go server, as today).
 - **Background mode:** re-exec `os.Executable()` with `DIFIT_BACKGROUND_CHILD=1`,
-  `SysProcAttr{Setsid: true}` (Windows: `DETACHED_PROCESS`), stdout/stdin to
-  /dev/null, stderr piped, and an extra pipe (`ExtraFiles`, fd 3) for the JSON
-  handshake in place of Node IPC. Parent prints the handshake JSON and exits;
-  same timeout / stderr-on-failure behavior.
+  `SysProcAttr{Setsid: true}` (Windows: `DETACHED_PROCESS`), stdin to
+  /dev/null, stderr piped, and stdout piped for the JSON handshake
+  (`DIFIT_BACKGROUND_READY {...}` line) in place of Node IPC. Parent prints the
+  handshake JSON and exits; same timeout / stderr-on-failure behavior.
 - **Shutdown:** heartbeat SSE disconnect → 100 ms grace → stop watcher → print
   comments → exit (unless `--keep-alive`). On SIGINT, print comments straight
   from in-memory state; no HTTP round trip to itself.
@@ -138,18 +138,20 @@ the TS stays for the client. To stop drift:
    ✅ binary serves the UI shell. **Done.**
 2. **Diff core** — `types`, `gitdiff` (resolve/merge-base/diff/parse/stdin/
    blob/line-count/revisions/default branch), `generated`.
-   ✅ ported git-diff + generated tests pass.
+   ✅ ported git-diff + generated tests pass. **Done.**
 3. **Server API** — all `/api/*` routes, comment sessions + versions,
    comment imports, user settings, open-in-editor, diff/generated-status
    caches, heartbeat/keep-alive shutdown. ✅ conformance harness green for
-   non-watch scenarios.
+   non-watch scenarios. **Done.**
 4. **CLI** — all flags and validations, arg resolution and DiffMode, stdin
    detection, untracked prompt + intent-to-add, `--pr` via `gh`, `comment`
-   subcommand, background mode, SIGINT output. ✅ ported CLI tests pass.
+   subcommand, background mode, SIGINT output. ✅ ported CLI tests pass. **Done.**
 5. **Watcher** — fsnotify recursive watcher, `/api/watch` SSE, cache
-   invalidation, `commentsChanged` events. ✅ watcher tests + E2E reload.
+   invalidation, `commentsChanged` events. ✅ watcher tests + E2E reload. **Done.**
 6. **Release** — goreleaser, cross-platform smoke on Linux/macOS/Windows CI
    runners (paths, editor spawn, browser open, background detach), README.
+   **Done** (goreleaser snapshot builds all six targets; the macOS/Windows CI
+   jobs have not run yet, since there is no remote).
 7. **Follow-ups (optional)** — site-data export via the binary, perf benchmarks.
 
 ## Decisions
@@ -157,3 +159,13 @@ the TS stays for the client. To stop drift:
 - One-time fork: no upstream syncing; `web/` diverges freely.
 - Binary is `difit`; project/repo is `difit-go`.
 - No VS Code extension, no npm wrapper.
+
+## Deliberate deviations from difit v5.0.12
+
+- SIGINT prints the review comments in stdin mode too.
+- Malformed JSON bodies get a JSON 400 instead of Express's HTML error page;
+  bodies are limited to 10 MB.
+- `OPTIONS` preflight requests return 204.
+- Background handshake over stdout instead of Node IPC; errors from the
+  child are not prefixed with `Error:` twice.
+- `--help` uses cobra's layout.

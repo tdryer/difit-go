@@ -8,14 +8,17 @@ import (
 )
 
 func TestPathHonorsEnv(t *testing.T) {
-	t.Setenv("DIFIT_CONFIG_DIR", "/tmp/custom ")
-	if got := Path(); got != "/tmp/custom/config.json" {
-		t.Fatalf("got %q", got)
+	custom := filepath.Join(t.TempDir(), "custom")
+	t.Setenv("DIFIT_CONFIG_DIR", custom+" ")
+	if got, want := Path(), filepath.Join(custom, "config.json"); got != want {
+		t.Fatalf("got %q, want %q", got, want)
 	}
+	home := t.TempDir()
 	t.Setenv("DIFIT_CONFIG_DIR", "  ")
-	t.Setenv("HOME", "/home/x")
-	if got := Path(); got != "/home/x/.difit/config.json" {
-		t.Fatalf("got %q", got)
+	t.Setenv("HOME", home)
+	t.Setenv("USERPROFILE", home)
+	if got, want := Path(), filepath.Join(home, ".difit", "config.json"); got != want {
+		t.Fatalf("got %q, want %q", got, want)
 	}
 }
 
