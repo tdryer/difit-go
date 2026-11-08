@@ -273,7 +273,9 @@ func (s *Service) loop(w *fsnotify.Watcher, workingTree bool, done <-chan struct
 }
 
 func (s *Service) handleEvent(w *fsnotify.Watcher, ev fsnotify.Event, workingTree bool) {
-	if ev.Op == fsnotify.Chmod || s.isIgnored(ev.Name) {
+	// A glob like node_modules/** also covers the directory itself, as in
+	// @parcel/watcher, so creating node_modules is not a change either.
+	if ev.Op == fsnotify.Chmod || s.isIgnored(ev.Name) || s.isIgnoredDir(ev.Name) {
 		return
 	}
 	if ev.Has(fsnotify.Create) {

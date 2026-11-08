@@ -1,0 +1,43 @@
+[
+  {
+    "step": "GET /api/comments-json",
+    "result": {
+      "body": {
+        "threads": [],
+        "version": 0
+      },
+      "contentType": "application/json",
+      "status": 200
+    }
+  },
+  {
+    "step": "output warnings",
+    "result": [
+      "Warning: Failed to load PR review comments: HTTP 401: Bad credentials (https://api.github.com/graphql)"
+    ]
+  },
+  {
+    "step": "gh calls",
+    "result": [
+      [
+        "pr",
+        "diff",
+        "https://github.com/owner/repo/pull/123"
+      ],
+      [
+        "api",
+        "graphql",
+        "--hostname",
+        "github.com",
+        "-f",
+        "query=\nquery($owner: String!, $repo: String!, $number: Int!, $endCursor: String) {\n  repository(owner: $owner, name: $repo) {\n    pullRequest(number: $number) {\n      reviewThreads(first: 100, after: $endCursor) {\n        nodes {\n          id\n          isResolved\n          isOutdated\n          subjectType\n          path\n          diffSide\n          startDiffSide\n          line\n          startLine\n          originalLine\n          originalStartLine\n          comments(first: 100) {\n            nodes {\n              id\n              body\n              createdAt\n              updatedAt\n              author {\n                login\n              }\n            }\n          }\n        }\n        pageInfo {\n          hasNextPage\n          endCursor\n        }\n      }\n    }\n  }\n}\n",
+        "-F",
+        "owner=owner",
+        "-F",
+        "repo=repo",
+        "-F",
+        "number=123"
+      ]
+    ]
+  }
+]

@@ -1,0 +1,236 @@
+[
+  {
+    "step": "watch: connect",
+    "result": [
+      {
+        "changeType": "file",
+        "diffMode": "working",
+        "message": "Connected to file watcher (working mode)",
+        "timestamp": "<now>",
+        "type": "connected"
+      }
+    ]
+  },
+  {
+    "step": "POST /api/comments",
+    "result": {
+      "body": {
+        "merged": false,
+        "success": true,
+        "threads": [
+          {
+            "createdAt": "2024-01-01T00:00:00.000Z",
+            "filePath": "a.txt",
+            "id": "w1",
+            "messages": [
+              {
+                "body": "Watch me",
+                "createdAt": "2024-01-01T00:00:00.000Z",
+                "id": "w1",
+                "updatedAt": "2024-01-01T00:00:00.000Z"
+              }
+            ],
+            "position": {
+              "line": 2,
+              "side": "new"
+            },
+            "updatedAt": "2024-01-01T00:00:00.000Z"
+          }
+        ],
+        "version": 1
+      },
+      "contentType": "application/json",
+      "status": 200
+    }
+  },
+  {
+    "step": "watch: comments saved",
+    "result": [
+      {
+        "timestamp": "<now>",
+        "type": "commentsChanged",
+        "version": 1
+      }
+    ]
+  },
+  {
+    "step": "watch: edit tracked file",
+    "result": [
+      {
+        "changeType": "file",
+        "diffMode": "working",
+        "message": "Changes detected in working mode",
+        "timestamp": "<now>",
+        "type": "reload"
+      }
+    ]
+  },
+  {
+    "step": "GET /api/diff",
+    "result": {
+      "body": {
+        "baseCommitish": "staged",
+        "commit": "Working Directory (unstaged changes)",
+        "files": [
+          {
+            "additions": 1,
+            "chunks": [
+              {
+                "header": "@@ -1,2 +1,3 @@",
+                "lines": [
+                  {
+                    "content": "one",
+                    "newLineNumber": 1,
+                    "oldLineNumber": 1,
+                    "type": "normal"
+                  },
+                  {
+                    "content": "two",
+                    "newLineNumber": 2,
+                    "oldLineNumber": 2,
+                    "type": "normal"
+                  },
+                  {
+                    "content": "three",
+                    "newLineNumber": 3,
+                    "type": "add"
+                  }
+                ],
+                "newLines": 3,
+                "newStart": 1,
+                "oldLines": 2,
+                "oldStart": 1
+              }
+            ],
+            "deletions": 0,
+            "isGenerated": false,
+            "path": "a.txt",
+            "status": "modified"
+          }
+        ],
+        "ignoreWhitespace": false,
+        "isEmpty": false,
+        "openInEditorAvailable": true,
+        "repositoryId": "<repositoryId>",
+        "requestedBaseCommitish": "staged",
+        "requestedTargetCommitish": "working",
+        "targetCommitish": "working"
+      },
+      "contentType": "application/json",
+      "status": 200
+    }
+  },
+  {
+    "step": "watch: write gitignored file",
+    "result": []
+  },
+  {
+    "step": "watch: write file in node_modules",
+    "result": []
+  },
+  {
+    "step": "watch: stage file",
+    "result": [
+      {
+        "changeType": "file",
+        "diffMode": "working",
+        "message": "Changes detected in working mode",
+        "timestamp": "<now>",
+        "type": "reload"
+      }
+    ]
+  },
+  {
+    "step": "GET /api/diff",
+    "result": {
+      "body": {
+        "baseCommitish": "staged",
+        "commit": "Working Directory (unstaged changes)",
+        "files": [],
+        "ignoreWhitespace": false,
+        "isEmpty": true,
+        "openInEditorAvailable": true,
+        "repositoryId": "<repositoryId>",
+        "requestedBaseCommitish": "staged",
+        "requestedTargetCommitish": "working",
+        "targetCommitish": "working"
+      },
+      "contentType": "application/json",
+      "status": 200
+    }
+  },
+  {
+    "step": "watch: commit",
+    "result": [
+      {
+        "changeType": "file",
+        "diffMode": "working",
+        "message": "Changes detected in working mode",
+        "timestamp": "<now>",
+        "type": "reload"
+      }
+    ]
+  },
+  {
+    "step": "GET /api/diff",
+    "result": {
+      "body": {
+        "baseCommitish": "staged",
+        "commit": "Working Directory (unstaged changes)",
+        "files": [],
+        "ignoreWhitespace": false,
+        "isEmpty": true,
+        "openInEditorAvailable": true,
+        "repositoryId": "<repositoryId>",
+        "requestedBaseCommitish": "staged",
+        "requestedTargetCommitish": "working",
+        "targetCommitish": "working"
+      },
+      "contentType": "application/json",
+      "status": 200
+    }
+  },
+  {
+    "step": "watch: create directory",
+    "result": [
+      {
+        "changeType": "file",
+        "diffMode": "working",
+        "message": "Changes detected in working mode",
+        "timestamp": "<now>",
+        "type": "reload"
+      }
+    ]
+  },
+  {
+    "step": "watch: edit file in new directory",
+    "result": [
+      {
+        "changeType": "file",
+        "diffMode": "working",
+        "message": "Changes detected in working mode",
+        "timestamp": "<now>",
+        "type": "reload"
+      }
+    ]
+  },
+  {
+    "step": "GET /api/diff",
+    "result": {
+      "body": {
+        "baseCommitish": "staged",
+        "commit": "Working Directory (unstaged changes)",
+        "files": [],
+        "ignoreWhitespace": false,
+        "isEmpty": true,
+        "openInEditorAvailable": true,
+        "repositoryId": "<repositoryId>",
+        "requestedBaseCommitish": "staged",
+        "requestedTargetCommitish": "working",
+        "targetCommitish": "working"
+      },
+      "contentType": "application/json",
+      "status": 200
+    }
+  }
+]

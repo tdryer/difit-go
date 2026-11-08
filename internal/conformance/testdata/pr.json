@@ -1,0 +1,642 @@
+[
+  {
+    "step": "GET /api/diff",
+    "result": {
+      "body": {
+        "baseCommitish": "stdin",
+        "commentImportId": "41b351cc057e5891df4603140a199660f324d9a1542208db7200b789ca159795",
+        "commentImports": [
+          {
+            "author": "alice",
+            "body": "Why 300?",
+            "createdAt": "2024-05-01T00:00:00Z",
+            "filePath": "src/app.ts",
+            "id": "C1",
+            "position": {
+              "line": 3,
+              "side": "new"
+            },
+            "type": "thread",
+            "updatedAt": "2024-05-01T01:00:00Z"
+          },
+          {
+            "author": "bob",
+            "body": "Agreed",
+            "createdAt": "2024-05-02T00:00:00Z",
+            "filePath": "src/app.ts",
+            "id": "C2",
+            "position": {
+              "line": 3,
+              "side": "new"
+            },
+            "type": "reply",
+            "updatedAt": "2024-05-02T00:00:00Z"
+          },
+          {
+            "body": "Old range",
+            "createdAt": "2024-05-03T00:00:00Z",
+            "filePath": "src/app.ts",
+            "id": "C3",
+            "position": {
+              "line": {
+                "end": 4,
+                "start": 2
+              },
+              "side": "old"
+            },
+            "type": "thread",
+            "updatedAt": "2024-05-03T00:00:00Z"
+          },
+          {
+            "author": "carol",
+            "body": "Redundant start",
+            "createdAt": "2024-05-05T00:00:00Z",
+            "filePath": "src/new-name.ts",
+            "id": "C10",
+            "position": {
+              "line": 3,
+              "side": "new"
+            },
+            "type": "thread",
+            "updatedAt": "2024-05-05T00:00:00Z"
+          },
+          {
+            "author": "dave",
+            "body": "Range on page two",
+            "createdAt": "2024-05-08T00:00:00Z",
+            "filePath": "src/app.ts",
+            "id": "C13",
+            "position": {
+              "line": {
+                "end": 31,
+                "start": 29
+              },
+              "side": "new"
+            },
+            "type": "thread",
+            "updatedAt": "2024-05-08T00:00:00Z"
+          }
+        ],
+        "commit": "stdin diff",
+        "files": [
+          {
+            "additions": 0,
+            "chunks": [],
+            "deletions": 0,
+            "isGenerated": false,
+            "path": "assets/logo.png",
+            "status": "modified"
+          },
+          {
+            "additions": 2,
+            "chunks": [
+              {
+                "header": "@@ -0,0 +1,2 @@",
+                "lines": [
+                  {
+                    "content": "one\r",
+                    "newLineNumber": 1,
+                    "type": "add"
+                  },
+                  {
+                    "content": "two\r",
+                    "newLineNumber": 2,
+                    "type": "add"
+                  }
+                ],
+                "newLines": 2,
+                "newStart": 1,
+                "oldLines": 0,
+                "oldStart": 0
+              }
+            ],
+            "deletions": 0,
+            "isGenerated": false,
+            "path": "crlf.txt",
+            "status": "added"
+          },
+          {
+            "additions": 0,
+            "chunks": [
+              {
+                "header": "@@ -1 +0,0 @@",
+                "lines": [
+                  {
+                    "content": "goodbye",
+                    "oldLineNumber": 1,
+                    "type": "delete"
+                  }
+                ],
+                "newLines": 0,
+                "newStart": 0,
+                "oldLines": 1,
+                "oldStart": 1
+              }
+            ],
+            "deletions": 1,
+            "isGenerated": false,
+            "path": "deleted.txt",
+            "status": "deleted"
+          },
+          {
+            "additions": 1,
+            "chunks": [
+              {
+                "header": "@@ -1 +1 @@",
+                "lines": [
+                  {
+                    "content": "こんにちは",
+                    "oldLineNumber": 1,
+                    "type": "delete"
+                  },
+                  {
+                    "content": "こんばんは",
+                    "newLineNumber": 1,
+                    "type": "add"
+                  }
+                ],
+                "newLines": 1,
+                "newStart": 1,
+                "oldLines": 1,
+                "oldStart": 1
+              }
+            ],
+            "deletions": 1,
+            "isGenerated": false,
+            "path": "dir with space/ファイル.txt",
+            "status": "modified"
+          },
+          {
+            "additions": 1,
+            "chunks": [
+              {
+                "header": "@@ -1 +1 @@",
+                "lines": [
+                  {
+                    "content": "export {};",
+                    "oldLineNumber": 1,
+                    "type": "delete"
+                  },
+                  {
+                    "content": "export const x = 1;",
+                    "newLineNumber": 1,
+                    "type": "add"
+                  }
+                ],
+                "newLines": 1,
+                "newStart": 1,
+                "oldLines": 1,
+                "oldStart": 1
+              }
+            ],
+            "deletions": 1,
+            "isGenerated": false,
+            "path": "gen/out.ts",
+            "status": "modified"
+          },
+          {
+            "additions": 1,
+            "chunks": [
+              {
+                "header": "@@ -0,0 +1 @@",
+                "lines": [
+                  {
+                    "content": "no newline at end",
+                    "newLineNumber": 1,
+                    "type": "add"
+                  }
+                ],
+                "newLines": 1,
+                "newStart": 1,
+                "oldLines": 0,
+                "oldStart": 0
+              }
+            ],
+            "deletions": 0,
+            "isGenerated": false,
+            "path": "no-newline.txt",
+            "status": "added"
+          },
+          {
+            "additions": 1,
+            "chunks": [
+              {
+                "header": "@@ -1 +1 @@",
+                "lines": [
+                  {
+                    "content": "{}",
+                    "oldLineNumber": 1,
+                    "type": "delete"
+                  },
+                  {
+                    "content": "{\"lockfileVersion\": 3}",
+                    "newLineNumber": 1,
+                    "type": "add"
+                  }
+                ],
+                "newLines": 1,
+                "newStart": 1,
+                "oldLines": 1,
+                "oldStart": 1
+              }
+            ],
+            "deletions": 1,
+            "isGenerated": true,
+            "path": "package-lock.json",
+            "status": "modified"
+          },
+          {
+            "additions": 2,
+            "chunks": [
+              {
+                "header": "@@ -0,0 +1,2 @@",
+                "lines": [
+                  {
+                    "content": "// @generated by protoc",
+                    "newLineNumber": 1,
+                    "type": "add"
+                  },
+                  {
+                    "content": "export {};",
+                    "newLineNumber": 2,
+                    "type": "add"
+                  }
+                ],
+                "newLines": 2,
+                "newStart": 1,
+                "oldLines": 0,
+                "oldStart": 0
+              }
+            ],
+            "deletions": 0,
+            "isGenerated": false,
+            "path": "src/api.ts",
+            "status": "added"
+          },
+          {
+            "additions": 2,
+            "chunks": [
+              {
+                "header": "@@ -1,6 +1,6 @@",
+                "lines": [
+                  {
+                    "content": "export const line1 = 1;",
+                    "newLineNumber": 1,
+                    "oldLineNumber": 1,
+                    "type": "normal"
+                  },
+                  {
+                    "content": "export const line2 = 2;",
+                    "newLineNumber": 2,
+                    "oldLineNumber": 2,
+                    "type": "normal"
+                  },
+                  {
+                    "content": "export const line3 = 3;",
+                    "oldLineNumber": 3,
+                    "type": "delete"
+                  },
+                  {
+                    "content": "export const line3 = 300;",
+                    "newLineNumber": 3,
+                    "type": "add"
+                  },
+                  {
+                    "content": "export const line4 = 4;",
+                    "newLineNumber": 4,
+                    "oldLineNumber": 4,
+                    "type": "normal"
+                  },
+                  {
+                    "content": "export const line5 = 5;",
+                    "newLineNumber": 5,
+                    "oldLineNumber": 5,
+                    "type": "normal"
+                  },
+                  {
+                    "content": "export const line6 = 6;",
+                    "newLineNumber": 6,
+                    "oldLineNumber": 6,
+                    "type": "normal"
+                  }
+                ],
+                "newLines": 6,
+                "newStart": 1,
+                "oldLines": 6,
+                "oldStart": 1
+              },
+              {
+                "header": "@@ -28,6 +28,7 @@ export const line27 = 27;",
+                "lines": [
+                  {
+                    "content": "export const line28 = 28;",
+                    "newLineNumber": 28,
+                    "oldLineNumber": 28,
+                    "type": "normal"
+                  },
+                  {
+                    "content": "export const line29 = 29;",
+                    "newLineNumber": 29,
+                    "oldLineNumber": 29,
+                    "type": "normal"
+                  },
+                  {
+                    "content": "export const line30 = 30;",
+                    "newLineNumber": 30,
+                    "oldLineNumber": 30,
+                    "type": "normal"
+                  },
+                  {
+                    "content": "export const inserted = true;",
+                    "newLineNumber": 31,
+                    "type": "add"
+                  },
+                  {
+                    "content": "export const line31 = 31;",
+                    "newLineNumber": 32,
+                    "oldLineNumber": 31,
+                    "type": "normal"
+                  },
+                  {
+                    "content": "export const line32 = 32;",
+                    "newLineNumber": 33,
+                    "oldLineNumber": 32,
+                    "type": "normal"
+                  },
+                  {
+                    "content": "export const line33 = 33;",
+                    "newLineNumber": 34,
+                    "oldLineNumber": 33,
+                    "type": "normal"
+                  }
+                ],
+                "newLines": 7,
+                "newStart": 28,
+                "oldLines": 6,
+                "oldStart": 28
+              }
+            ],
+            "deletions": 1,
+            "isGenerated": false,
+            "path": "src/app.ts",
+            "status": "modified"
+          },
+          {
+            "additions": 1,
+            "chunks": [
+              {
+                "header": "@@ -1,3 +1,3 @@",
+                "lines": [
+                  {
+                    "content": "export const a = 1;",
+                    "newLineNumber": 1,
+                    "oldLineNumber": 1,
+                    "type": "normal"
+                  },
+                  {
+                    "content": "export const b = 2;",
+                    "newLineNumber": 2,
+                    "oldLineNumber": 2,
+                    "type": "normal"
+                  },
+                  {
+                    "content": "export const c = 3;",
+                    "oldLineNumber": 3,
+                    "type": "delete"
+                  },
+                  {
+                    "content": "export const c = 4;",
+                    "newLineNumber": 3,
+                    "type": "add"
+                  }
+                ],
+                "newLines": 3,
+                "newStart": 1,
+                "oldLines": 3,
+                "oldStart": 1
+              }
+            ],
+            "deletions": 1,
+            "isGenerated": false,
+            "oldPath": "src/old-name.ts",
+            "path": "src/new-name.ts",
+            "status": "renamed"
+          },
+          {
+            "additions": 1,
+            "chunks": [
+              {
+                "header": "@@ -1,2 +1,2 @@",
+                "lines": [
+                  {
+                    "content": "alpha beta",
+                    "oldLineNumber": 1,
+                    "type": "delete"
+                  },
+                  {
+                    "content": "alpha  beta",
+                    "newLineNumber": 1,
+                    "type": "add"
+                  },
+                  {
+                    "content": "gamma",
+                    "newLineNumber": 2,
+                    "oldLineNumber": 2,
+                    "type": "normal"
+                  }
+                ],
+                "newLines": 2,
+                "newStart": 1,
+                "oldLines": 2,
+                "oldStart": 1
+              }
+            ],
+            "deletions": 1,
+            "isGenerated": false,
+            "path": "whitespace.txt",
+            "status": "modified"
+          }
+        ],
+        "ignoreWhitespace": false,
+        "isEmpty": false,
+        "openInEditorAvailable": false,
+        "repositoryId": "<repositoryId>",
+        "requestedBaseCommitish": "stdin",
+        "requestedTargetCommitish": "stdin",
+        "targetCommitish": "stdin"
+      },
+      "contentType": "application/json",
+      "status": 200
+    }
+  },
+  {
+    "step": "GET /api/revisions",
+    "result": {
+      "body": {
+        "error": "Revision selection not available for stdin diff"
+      },
+      "contentType": "application/json",
+      "status": 400
+    }
+  },
+  {
+    "step": "GET /api/comments-json",
+    "result": {
+      "body": {
+        "threads": [
+          {
+            "createdAt": "2024-05-01T00:00:00Z",
+            "filePath": "src/app.ts",
+            "id": "C1",
+            "messages": [
+              {
+                "author": "alice",
+                "body": "Why 300?",
+                "createdAt": "2024-05-01T00:00:00Z",
+                "id": "C1",
+                "updatedAt": "2024-05-01T01:00:00Z"
+              },
+              {
+                "author": "bob",
+                "body": "Agreed",
+                "createdAt": "2024-05-02T00:00:00Z",
+                "id": "C2",
+                "updatedAt": "2024-05-02T00:00:00Z"
+              }
+            ],
+            "position": {
+              "line": 3,
+              "side": "new"
+            },
+            "updatedAt": "2024-05-02T00:00:00Z"
+          },
+          {
+            "createdAt": "2024-05-03T00:00:00Z",
+            "filePath": "src/app.ts",
+            "id": "C3",
+            "messages": [
+              {
+                "body": "Old range",
+                "createdAt": "2024-05-03T00:00:00Z",
+                "id": "C3",
+                "updatedAt": "2024-05-03T00:00:00Z"
+              }
+            ],
+            "position": {
+              "line": {
+                "end": 4,
+                "start": 2
+              },
+              "side": "old"
+            },
+            "updatedAt": "2024-05-03T00:00:00Z"
+          },
+          {
+            "createdAt": "2024-05-05T00:00:00Z",
+            "filePath": "src/new-name.ts",
+            "id": "C10",
+            "messages": [
+              {
+                "author": "carol",
+                "body": "Redundant start",
+                "createdAt": "2024-05-05T00:00:00Z",
+                "id": "C10",
+                "updatedAt": "2024-05-05T00:00:00Z"
+              }
+            ],
+            "position": {
+              "line": 3,
+              "side": "new"
+            },
+            "updatedAt": "2024-05-05T00:00:00Z"
+          },
+          {
+            "createdAt": "2024-05-08T00:00:00Z",
+            "filePath": "src/app.ts",
+            "id": "C13",
+            "messages": [
+              {
+                "author": "dave",
+                "body": "Range on page two",
+                "createdAt": "2024-05-08T00:00:00Z",
+                "id": "C13",
+                "updatedAt": "2024-05-08T00:00:00Z"
+              }
+            ],
+            "position": {
+              "line": {
+                "end": 31,
+                "start": 29
+              },
+              "side": "new"
+            },
+            "updatedAt": "2024-05-08T00:00:00Z"
+          }
+        ],
+        "version": 1
+      },
+      "contentType": "application/json",
+      "status": 200
+    }
+  },
+  {
+    "step": "GET /api/comments-output",
+    "result": {
+      "body": "\n📝 Comments from review session:\n==================================================\nsrc/app.ts:L3\nWhy 300?\nReply 1 (bob)\nAgreed\n=====\nsrc/app.ts:L2-L4 (old)\nOld range\n=====\nsrc/new-name.ts:L3\nRedundant start\n=====\nsrc/app.ts:L29-L31\nRange on page two\n==================================================\nTotal comments: 4\n",
+      "contentType": "text/plain",
+      "status": 200
+    }
+  },
+  {
+    "step": "output warnings",
+    "result": [
+      "Warning: Skipping PR review thread T6: RIGHT thread is missing line.",
+      "Warning: Skipping PR review thread T7: Thread is missing path.",
+      "Warning: Skipping PR review thread T8: Thread has a comment with missing fields.",
+      "Warning: Skipping PR review thread T9: Thread has a comment with missing fields.",
+      "Warning: Skipping PR review thread T10: Thread has no comments.",
+      "Warning: Skipping PR review thread T11: RIGHT thread has mismatched startDiffSide.",
+      "Warning: Skipping PR review thread T13: Unsupported diffSide."
+    ]
+  },
+  {
+    "step": "gh calls",
+    "result": [
+      [
+        "pr",
+        "diff",
+        "https://github.com/owner/repo/pull/123"
+      ],
+      [
+        "api",
+        "graphql",
+        "--hostname",
+        "github.com",
+        "-f",
+        "query=\nquery($owner: String!, $repo: String!, $number: Int!, $endCursor: String) {\n  repository(owner: $owner, name: $repo) {\n    pullRequest(number: $number) {\n      reviewThreads(first: 100, after: $endCursor) {\n        nodes {\n          id\n          isResolved\n          isOutdated\n          subjectType\n          path\n          diffSide\n          startDiffSide\n          line\n          startLine\n          originalLine\n          originalStartLine\n          comments(first: 100) {\n            nodes {\n              id\n              body\n              createdAt\n              updatedAt\n              author {\n                login\n              }\n            }\n          }\n        }\n        pageInfo {\n          hasNextPage\n          endCursor\n        }\n      }\n    }\n  }\n}\n",
+        "-F",
+        "owner=owner",
+        "-F",
+        "repo=repo",
+        "-F",
+        "number=123"
+      ],
+      [
+        "api",
+        "graphql",
+        "--hostname",
+        "github.com",
+        "-f",
+        "query=\nquery($owner: String!, $repo: String!, $number: Int!, $endCursor: String) {\n  repository(owner: $owner, name: $repo) {\n    pullRequest(number: $number) {\n      reviewThreads(first: 100, after: $endCursor) {\n        nodes {\n          id\n          isResolved\n          isOutdated\n          subjectType\n          path\n          diffSide\n          startDiffSide\n          line\n          startLine\n          originalLine\n          originalStartLine\n          comments(first: 100) {\n            nodes {\n              id\n              body\n              createdAt\n              updatedAt\n              author {\n                login\n              }\n            }\n          }\n        }\n        pageInfo {\n          hasNextPage\n          endCursor\n        }\n      }\n    }\n  }\n}\n",
+        "-F",
+        "owner=owner",
+        "-F",
+        "repo=repo",
+        "-F",
+        "number=123",
+        "-F",
+        "endCursor=c2"
+      ]
+    ]
+  }
+]

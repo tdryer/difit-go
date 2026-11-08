@@ -1,0 +1,960 @@
+[
+  {
+    "step": "GET /api/diff",
+    "result": {
+      "body": {
+        "baseCommitish": "2c3445e",
+        "commit": "2c3445e...3d01b57",
+        "files": [
+          {
+            "additions": 0,
+            "chunks": [],
+            "deletions": 0,
+            "isGenerated": false,
+            "path": "assets/logo.png",
+            "status": "modified"
+          },
+          {
+            "additions": 0,
+            "chunks": [
+              {
+                "header": "@@ -1,2 +0,0 @@",
+                "lines": [
+                  {
+                    "content": "one\r",
+                    "oldLineNumber": 1,
+                    "type": "delete"
+                  },
+                  {
+                    "content": "two\r",
+                    "oldLineNumber": 2,
+                    "type": "delete"
+                  }
+                ],
+                "newLines": 0,
+                "newStart": 0,
+                "oldLines": 2,
+                "oldStart": 1
+              }
+            ],
+            "deletions": 2,
+            "isGenerated": false,
+            "path": "crlf.txt",
+            "status": "deleted"
+          },
+          {
+            "additions": 1,
+            "chunks": [
+              {
+                "header": "@@ -0,0 +1 @@",
+                "lines": [
+                  {
+                    "content": "goodbye",
+                    "newLineNumber": 1,
+                    "type": "add"
+                  }
+                ],
+                "newLines": 1,
+                "newStart": 1,
+                "oldLines": 0,
+                "oldStart": 0
+              }
+            ],
+            "deletions": 0,
+            "isGenerated": false,
+            "path": "deleted.txt",
+            "status": "added"
+          },
+          {
+            "additions": 1,
+            "chunks": [
+              {
+                "header": "@@ -1 +1 @@",
+                "lines": [
+                  {
+                    "content": "こんばんは",
+                    "oldLineNumber": 1,
+                    "type": "delete"
+                  },
+                  {
+                    "content": "こんにちは",
+                    "newLineNumber": 1,
+                    "type": "add"
+                  }
+                ],
+                "newLines": 1,
+                "newStart": 1,
+                "oldLines": 1,
+                "oldStart": 1
+              }
+            ],
+            "deletions": 1,
+            "isGenerated": false,
+            "path": "dir with space/ファイル.txt",
+            "status": "modified"
+          },
+          {
+            "additions": 1,
+            "chunks": [
+              {
+                "header": "@@ -0,0 +1 @@",
+                "lines": [
+                  {
+                    "content": "export const feature = true;",
+                    "newLineNumber": 1,
+                    "type": "add"
+                  }
+                ],
+                "newLines": 1,
+                "newStart": 1,
+                "oldLines": 0,
+                "oldStart": 0
+              }
+            ],
+            "deletions": 0,
+            "isGenerated": false,
+            "path": "feature.ts",
+            "status": "added"
+          },
+          {
+            "additions": 1,
+            "chunks": [
+              {
+                "header": "@@ -1 +1 @@",
+                "lines": [
+                  {
+                    "content": "export const x = 1;",
+                    "oldLineNumber": 1,
+                    "type": "delete"
+                  },
+                  {
+                    "content": "export {};",
+                    "newLineNumber": 1,
+                    "type": "add"
+                  }
+                ],
+                "newLines": 1,
+                "newStart": 1,
+                "oldLines": 1,
+                "oldStart": 1
+              }
+            ],
+            "deletions": 1,
+            "isGenerated": true,
+            "path": "gen/out.ts",
+            "status": "modified"
+          },
+          {
+            "additions": 0,
+            "chunks": [
+              {
+                "header": "@@ -1 +0,0 @@",
+                "lines": [
+                  {
+                    "content": "no newline at end",
+                    "oldLineNumber": 1,
+                    "type": "delete"
+                  }
+                ],
+                "newLines": 0,
+                "newStart": 0,
+                "oldLines": 1,
+                "oldStart": 1
+              }
+            ],
+            "deletions": 1,
+            "isGenerated": false,
+            "path": "no-newline.txt",
+            "status": "deleted"
+          },
+          {
+            "additions": 1,
+            "chunks": [
+              {
+                "header": "@@ -1 +1 @@",
+                "lines": [
+                  {
+                    "content": "{\"lockfileVersion\": 3}",
+                    "oldLineNumber": 1,
+                    "type": "delete"
+                  },
+                  {
+                    "content": "{}",
+                    "newLineNumber": 1,
+                    "type": "add"
+                  }
+                ],
+                "newLines": 1,
+                "newStart": 1,
+                "oldLines": 1,
+                "oldStart": 1
+              }
+            ],
+            "deletions": 1,
+            "isGenerated": true,
+            "path": "package-lock.json",
+            "status": "modified"
+          },
+          {
+            "additions": 0,
+            "chunks": [
+              {
+                "header": "@@ -1,2 +0,0 @@",
+                "lines": [
+                  {
+                    "content": "// @generated by protoc",
+                    "oldLineNumber": 1,
+                    "type": "delete"
+                  },
+                  {
+                    "content": "export {};",
+                    "oldLineNumber": 2,
+                    "type": "delete"
+                  }
+                ],
+                "newLines": 0,
+                "newStart": 0,
+                "oldLines": 2,
+                "oldStart": 1
+              }
+            ],
+            "deletions": 2,
+            "isGenerated": false,
+            "path": "src/api.ts",
+            "status": "deleted"
+          },
+          {
+            "additions": 1,
+            "chunks": [
+              {
+                "header": "@@ -2,3 +2,3 @@ export const line1 = 1;",
+                "lines": [
+                  {
+                    "content": "export const line2 = 2;",
+                    "newLineNumber": 2,
+                    "oldLineNumber": 2,
+                    "type": "normal"
+                  },
+                  {
+                    "content": "export const line3 = 300;",
+                    "oldLineNumber": 3,
+                    "type": "delete"
+                  },
+                  {
+                    "content": "export const line3 = 3;",
+                    "newLineNumber": 3,
+                    "type": "add"
+                  },
+                  {
+                    "content": "export const line4 = 4;",
+                    "newLineNumber": 4,
+                    "oldLineNumber": 4,
+                    "type": "normal"
+                  }
+                ],
+                "newLines": 3,
+                "newStart": 2,
+                "oldLines": 3,
+                "oldStart": 2
+              },
+              {
+                "header": "@@ -30,3 +30,2 @@ export const line29 = 29;",
+                "lines": [
+                  {
+                    "content": "export const line30 = 30;",
+                    "newLineNumber": 30,
+                    "oldLineNumber": 30,
+                    "type": "normal"
+                  },
+                  {
+                    "content": "export const inserted = true;",
+                    "oldLineNumber": 31,
+                    "type": "delete"
+                  },
+                  {
+                    "content": "export const line31 = 31;",
+                    "newLineNumber": 31,
+                    "oldLineNumber": 32,
+                    "type": "normal"
+                  }
+                ],
+                "newLines": 2,
+                "newStart": 30,
+                "oldLines": 3,
+                "oldStart": 30
+              }
+            ],
+            "deletions": 2,
+            "isGenerated": false,
+            "path": "src/app.ts",
+            "status": "modified"
+          },
+          {
+            "additions": 1,
+            "chunks": [
+              {
+                "header": "@@ -2,2 +2,2 @@ export const a = 1;",
+                "lines": [
+                  {
+                    "content": "export const b = 2;",
+                    "newLineNumber": 2,
+                    "oldLineNumber": 2,
+                    "type": "normal"
+                  },
+                  {
+                    "content": "export const c = 4;",
+                    "oldLineNumber": 3,
+                    "type": "delete"
+                  },
+                  {
+                    "content": "export const c = 3;",
+                    "newLineNumber": 3,
+                    "type": "add"
+                  }
+                ],
+                "newLines": 2,
+                "newStart": 2,
+                "oldLines": 2,
+                "oldStart": 2
+              }
+            ],
+            "deletions": 1,
+            "isGenerated": false,
+            "oldPath": "src/new-name.ts",
+            "path": "src/old-name.ts",
+            "status": "renamed"
+          },
+          {
+            "additions": 1,
+            "chunks": [
+              {
+                "header": "@@ -1,2 +1,2 @@",
+                "lines": [
+                  {
+                    "content": "alpha  beta",
+                    "oldLineNumber": 1,
+                    "type": "delete"
+                  },
+                  {
+                    "content": "alpha beta",
+                    "newLineNumber": 1,
+                    "type": "add"
+                  },
+                  {
+                    "content": "gamma",
+                    "newLineNumber": 2,
+                    "oldLineNumber": 2,
+                    "type": "normal"
+                  }
+                ],
+                "newLines": 2,
+                "newStart": 1,
+                "oldLines": 2,
+                "oldStart": 1
+              }
+            ],
+            "deletions": 1,
+            "isGenerated": false,
+            "path": "whitespace.txt",
+            "status": "modified"
+          }
+        ],
+        "ignoreWhitespace": false,
+        "isEmpty": false,
+        "openInEditorAvailable": true,
+        "repositoryId": "<repositoryId>",
+        "requestedBaseCommitish": "main",
+        "requestedTargetCommitish": "feature",
+        "targetCommitish": "3d01b57"
+      },
+      "contentType": "application/json",
+      "status": 200
+    }
+  },
+  {
+    "step": "GET /api/diff?ignoreWhitespace=true",
+    "result": {
+      "body": {
+        "baseCommitish": "2c3445e",
+        "commit": "2c3445e...3d01b57",
+        "files": [
+          {
+            "additions": 0,
+            "chunks": [],
+            "deletions": 0,
+            "isGenerated": false,
+            "path": "assets/logo.png",
+            "status": "modified"
+          },
+          {
+            "additions": 0,
+            "chunks": [
+              {
+                "header": "@@ -1,2 +0,0 @@",
+                "lines": [
+                  {
+                    "content": "one\r",
+                    "oldLineNumber": 1,
+                    "type": "delete"
+                  },
+                  {
+                    "content": "two\r",
+                    "oldLineNumber": 2,
+                    "type": "delete"
+                  }
+                ],
+                "newLines": 0,
+                "newStart": 0,
+                "oldLines": 2,
+                "oldStart": 1
+              }
+            ],
+            "deletions": 2,
+            "isGenerated": false,
+            "path": "crlf.txt",
+            "status": "deleted"
+          },
+          {
+            "additions": 1,
+            "chunks": [
+              {
+                "header": "@@ -0,0 +1 @@",
+                "lines": [
+                  {
+                    "content": "goodbye",
+                    "newLineNumber": 1,
+                    "type": "add"
+                  }
+                ],
+                "newLines": 1,
+                "newStart": 1,
+                "oldLines": 0,
+                "oldStart": 0
+              }
+            ],
+            "deletions": 0,
+            "isGenerated": false,
+            "path": "deleted.txt",
+            "status": "added"
+          },
+          {
+            "additions": 1,
+            "chunks": [
+              {
+                "header": "@@ -1 +1 @@",
+                "lines": [
+                  {
+                    "content": "こんばんは",
+                    "oldLineNumber": 1,
+                    "type": "delete"
+                  },
+                  {
+                    "content": "こんにちは",
+                    "newLineNumber": 1,
+                    "type": "add"
+                  }
+                ],
+                "newLines": 1,
+                "newStart": 1,
+                "oldLines": 1,
+                "oldStart": 1
+              }
+            ],
+            "deletions": 1,
+            "isGenerated": false,
+            "path": "dir with space/ファイル.txt",
+            "status": "modified"
+          },
+          {
+            "additions": 1,
+            "chunks": [
+              {
+                "header": "@@ -0,0 +1 @@",
+                "lines": [
+                  {
+                    "content": "export const feature = true;",
+                    "newLineNumber": 1,
+                    "type": "add"
+                  }
+                ],
+                "newLines": 1,
+                "newStart": 1,
+                "oldLines": 0,
+                "oldStart": 0
+              }
+            ],
+            "deletions": 0,
+            "isGenerated": false,
+            "path": "feature.ts",
+            "status": "added"
+          },
+          {
+            "additions": 1,
+            "chunks": [
+              {
+                "header": "@@ -1 +1 @@",
+                "lines": [
+                  {
+                    "content": "export const x = 1;",
+                    "oldLineNumber": 1,
+                    "type": "delete"
+                  },
+                  {
+                    "content": "export {};",
+                    "newLineNumber": 1,
+                    "type": "add"
+                  }
+                ],
+                "newLines": 1,
+                "newStart": 1,
+                "oldLines": 1,
+                "oldStart": 1
+              }
+            ],
+            "deletions": 1,
+            "isGenerated": true,
+            "path": "gen/out.ts",
+            "status": "modified"
+          },
+          {
+            "additions": 0,
+            "chunks": [
+              {
+                "header": "@@ -1 +0,0 @@",
+                "lines": [
+                  {
+                    "content": "no newline at end",
+                    "oldLineNumber": 1,
+                    "type": "delete"
+                  }
+                ],
+                "newLines": 0,
+                "newStart": 0,
+                "oldLines": 1,
+                "oldStart": 1
+              }
+            ],
+            "deletions": 1,
+            "isGenerated": false,
+            "path": "no-newline.txt",
+            "status": "deleted"
+          },
+          {
+            "additions": 1,
+            "chunks": [
+              {
+                "header": "@@ -1 +1 @@",
+                "lines": [
+                  {
+                    "content": "{\"lockfileVersion\": 3}",
+                    "oldLineNumber": 1,
+                    "type": "delete"
+                  },
+                  {
+                    "content": "{}",
+                    "newLineNumber": 1,
+                    "type": "add"
+                  }
+                ],
+                "newLines": 1,
+                "newStart": 1,
+                "oldLines": 1,
+                "oldStart": 1
+              }
+            ],
+            "deletions": 1,
+            "isGenerated": true,
+            "path": "package-lock.json",
+            "status": "modified"
+          },
+          {
+            "additions": 0,
+            "chunks": [
+              {
+                "header": "@@ -1,2 +0,0 @@",
+                "lines": [
+                  {
+                    "content": "// @generated by protoc",
+                    "oldLineNumber": 1,
+                    "type": "delete"
+                  },
+                  {
+                    "content": "export {};",
+                    "oldLineNumber": 2,
+                    "type": "delete"
+                  }
+                ],
+                "newLines": 0,
+                "newStart": 0,
+                "oldLines": 2,
+                "oldStart": 1
+              }
+            ],
+            "deletions": 2,
+            "isGenerated": false,
+            "path": "src/api.ts",
+            "status": "deleted"
+          },
+          {
+            "additions": 1,
+            "chunks": [
+              {
+                "header": "@@ -2,3 +2,3 @@ export const line1 = 1;",
+                "lines": [
+                  {
+                    "content": "export const line2 = 2;",
+                    "newLineNumber": 2,
+                    "oldLineNumber": 2,
+                    "type": "normal"
+                  },
+                  {
+                    "content": "export const line3 = 300;",
+                    "oldLineNumber": 3,
+                    "type": "delete"
+                  },
+                  {
+                    "content": "export const line3 = 3;",
+                    "newLineNumber": 3,
+                    "type": "add"
+                  },
+                  {
+                    "content": "export const line4 = 4;",
+                    "newLineNumber": 4,
+                    "oldLineNumber": 4,
+                    "type": "normal"
+                  }
+                ],
+                "newLines": 3,
+                "newStart": 2,
+                "oldLines": 3,
+                "oldStart": 2
+              },
+              {
+                "header": "@@ -30,3 +30,2 @@ export const line29 = 29;",
+                "lines": [
+                  {
+                    "content": "export const line30 = 30;",
+                    "newLineNumber": 30,
+                    "oldLineNumber": 30,
+                    "type": "normal"
+                  },
+                  {
+                    "content": "export const inserted = true;",
+                    "oldLineNumber": 31,
+                    "type": "delete"
+                  },
+                  {
+                    "content": "export const line31 = 31;",
+                    "newLineNumber": 31,
+                    "oldLineNumber": 32,
+                    "type": "normal"
+                  }
+                ],
+                "newLines": 2,
+                "newStart": 30,
+                "oldLines": 3,
+                "oldStart": 30
+              }
+            ],
+            "deletions": 2,
+            "isGenerated": false,
+            "path": "src/app.ts",
+            "status": "modified"
+          },
+          {
+            "additions": 1,
+            "chunks": [
+              {
+                "header": "@@ -2,2 +2,2 @@ export const a = 1;",
+                "lines": [
+                  {
+                    "content": "export const b = 2;",
+                    "newLineNumber": 2,
+                    "oldLineNumber": 2,
+                    "type": "normal"
+                  },
+                  {
+                    "content": "export const c = 4;",
+                    "oldLineNumber": 3,
+                    "type": "delete"
+                  },
+                  {
+                    "content": "export const c = 3;",
+                    "newLineNumber": 3,
+                    "type": "add"
+                  }
+                ],
+                "newLines": 2,
+                "newStart": 2,
+                "oldLines": 2,
+                "oldStart": 2
+              }
+            ],
+            "deletions": 1,
+            "isGenerated": false,
+            "oldPath": "src/new-name.ts",
+            "path": "src/old-name.ts",
+            "status": "renamed"
+          }
+        ],
+        "ignoreWhitespace": true,
+        "isEmpty": false,
+        "openInEditorAvailable": true,
+        "repositoryId": "<repositoryId>",
+        "requestedBaseCommitish": "main",
+        "requestedTargetCommitish": "feature",
+        "targetCommitish": "3d01b57"
+      },
+      "contentType": "application/json",
+      "status": 200
+    }
+  },
+  {
+    "step": "GET /api/revisions",
+    "result": {
+      "body": {
+        "branches": [
+          {
+            "current": true,
+            "name": "main"
+          },
+          {
+            "current": false,
+            "name": "alpha"
+          },
+          {
+            "current": false,
+            "name": "feature"
+          },
+          {
+            "current": false,
+            "name": "Zeta"
+          }
+        ],
+        "commits": [
+          {
+            "hash": "2c3445e45689c6427dc0984018063868ddb145f1",
+            "message": "main changes",
+            "shortHash": "2c3445e"
+          },
+          {
+            "hash": "ed83d891758d1528be2ac6064ab4eadcb9f88c87",
+            "message": "initial",
+            "shortHash": "ed83d89"
+          }
+        ],
+        "resolvedBase": "2c3445e",
+        "resolvedTarget": "3d01b57",
+        "specialOptions": [
+          {
+            "label": "All Uncommitted Changes",
+            "value": "."
+          },
+          {
+            "label": "Staging Area",
+            "value": "staged"
+          },
+          {
+            "label": "Working Directory",
+            "value": "working"
+          }
+        ]
+      },
+      "contentType": "application/json",
+      "status": 200
+    }
+  },
+  {
+    "step": "GET /api/generated-status/package-lock.json",
+    "result": {
+      "body": {
+        "isGenerated": true,
+        "path": "package-lock.json",
+        "ref": "feature",
+        "source": "path"
+      },
+      "contentType": "application/json",
+      "status": 200
+    }
+  },
+  {
+    "step": "GET /api/generated-status/gen/out.ts",
+    "result": {
+      "body": {
+        "isGenerated": true,
+        "path": "gen/out.ts",
+        "ref": "feature",
+        "source": "path"
+      },
+      "contentType": "application/json",
+      "status": 200
+    }
+  },
+  {
+    "step": "GET /api/generated-status/src/api.ts?ref=HEAD",
+    "result": {
+      "body": {
+        "isGenerated": true,
+        "path": "src/api.ts",
+        "ref": "HEAD",
+        "source": "content"
+      },
+      "contentType": "application/json",
+      "status": 200
+    }
+  },
+  {
+    "step": "GET /api/generated-status/src/app.ts",
+    "result": {
+      "body": {
+        "isGenerated": false,
+        "path": "src/app.ts",
+        "ref": "feature",
+        "source": "content"
+      },
+      "contentType": "application/json",
+      "status": 200
+    }
+  },
+  {
+    "step": "GET /api/generated-status/..%2Fsecret",
+    "result": {
+      "body": {
+        "error": "File path outside repository"
+      },
+      "contentType": "application/json",
+      "status": 400
+    }
+  },
+  {
+    "step": "GET /api/line-count/src/app.ts?oldRef=HEAD~1&newRef=HEAD",
+    "result": {
+      "body": {
+        "newLineCount": 41,
+        "oldLineCount": 40
+      },
+      "contentType": "application/json",
+      "status": 200
+    }
+  },
+  {
+    "step": "GET /api/line-count/src/new-name.ts?oldRef=HEAD~1&newRef=HEAD&oldPath=src/old-name.ts",
+    "result": {
+      "body": {
+        "newLineCount": 3,
+        "oldLineCount": 3
+      },
+      "contentType": "application/json",
+      "status": 200
+    }
+  },
+  {
+    "step": "GET /api/line-count/no-newline.txt?newRef=working",
+    "result": {
+      "body": {
+        "newLineCount": 1
+      },
+      "contentType": "application/json",
+      "status": 200
+    }
+  },
+  {
+    "step": "GET /api/line-count/missing.txt?oldRef=HEAD",
+    "result": {
+      "body": {
+        "oldLineCount": 0
+      },
+      "contentType": "application/json",
+      "status": 200
+    }
+  },
+  {
+    "step": "GET /api/line-count/src/app.ts?oldPath=..%2Fx&oldRef=HEAD",
+    "result": {
+      "body": {
+        "error": "File path outside repository"
+      },
+      "contentType": "application/json",
+      "status": 400
+    }
+  },
+  {
+    "step": "GET /api/blob/assets/logo.png?ref=HEAD~1",
+    "result": {
+      "body": "<17 bytes, sha256 90d01922394829cc52e843abf819d4b0e1b4b2300f2fd6137211ad214c1c8ad3>",
+      "contentType": "image/png",
+      "status": 200
+    }
+  },
+  {
+    "step": "GET /api/blob/assets%2Flogo.png",
+    "result": {
+      "body": "<18 bytes, sha256 ab8acbeb921c26f05a0dc00c24c0b115fa068c2f27b09ddf0665dbbf4c0e191c>",
+      "contentType": "image/png",
+      "status": 200
+    }
+  },
+  {
+    "step": "GET /api/blob/src/app.ts?ref=working",
+    "result": {
+      "body": "export const line1 = 1;\nexport const line2 = 2;\nexport const line3 = 300;\nexport const line4 = 4;\nexport const line5 = 5;\nexport const line6 = 6;\nexport const line7 = 7;\nexport const line8 = 8;\nexport const line9 = 9;\nexport const line10 = 1000;\nexport const line11 = 11;\nexport const line12 = 12;\nexport const line13 = 13;\nexport const line14 = 14;\nexport const line15 = 15;\nexport const line16 = 16;\nexport const line17 = 17;\nexport const line18 = 18;\nexport const line19 = 19;\nexport const line20 = 20;\nexport const line21 = 21;\nexport const line22 = 22;\nexport const line23 = 23;\nexport const line24 = 24;\nexport const line25 = 25;\nexport const line26 = 26;\nexport const line27 = 27;\nexport const line28 = 28;\nexport const line29 = 29;\nexport const line30 = 30;\nexport const inserted = true;\nexport const line31 = 31;\nexport const line32 = 32;\nexport const line33 = 33;\nexport const line34 = 34;\nexport const line35 = 35;\nexport const line36 = 36;\nexport const line37 = 37;\nexport const line38 = 38;\nexport const line39 = 39;\nexport const line40 = 40;\n",
+      "contentType": "application/octet-stream",
+      "status": 200
+    }
+  },
+  {
+    "step": "GET /api/blob/README.md?ref=staged",
+    "result": {
+      "body": "# Fixture\n\nSome staged text.\n",
+      "contentType": "application/octet-stream",
+      "status": 200
+    }
+  },
+  {
+    "step": "GET /api/blob/dir%20with%20space%2F%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB.txt?ref=HEAD",
+    "result": {
+      "body": "こんばんは\n",
+      "contentType": "application/octet-stream",
+      "status": 200
+    }
+  },
+  {
+    "step": "GET /api/blob/missing.png",
+    "result": {
+      "body": {
+        "error": "File not found"
+      },
+      "contentType": "application/json",
+      "status": 404
+    }
+  },
+  {
+    "step": "GET /api/blob/%2Fetc%2Fpasswd",
+    "result": {
+      "body": {
+        "error": "File path outside repository"
+      },
+      "contentType": "application/json",
+      "status": 400
+    }
+  },
+  {
+    "step": "GET /api/comments-json",
+    "result": {
+      "body": {
+        "threads": [],
+        "version": 0
+      },
+      "contentType": "application/json",
+      "status": 200
+    }
+  },
+  {
+    "step": "GET /api/comments-output",
+    "result": {
+      "body": "",
+      "contentType": "text/plain",
+      "status": 200
+    }
+  }
+]

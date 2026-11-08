@@ -80,6 +80,7 @@ func TestWorkingModeReloadsOnFileChange(t *testing.T) {
 
 	r.Write("debug.log", "x")
 	r.Write("ignored/y.txt", "y")
+	r.Write("node_modules/m/index.js", "m")
 	expectNoEvent(t, ch)
 
 	r.Write("newdir/deep/file.txt", "f")
