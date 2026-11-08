@@ -1,0 +1,7 @@
+# Upstream TypeScript reference, removed once the port is complete
+/difit/
+
+/bin/
+/internal/web/assets/dist/
+node_modules/
+*.tsbuildinfo

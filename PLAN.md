@@ -39,7 +39,8 @@ difit-go/
     userconfig/               ~/.difit/config.json read / patch
     github/                   PR URL parsing, `gh` patch + GraphQL review threads
     types/                    JSON structs mirroring src/types/diff.ts & watch.ts
-    web/                      embed.go (//go:embed dist) + dist/ (build output, gitignored)
+    web/                      web.go (//go:embed all:assets): assets/dist (Vite output, gitignored)
+                              and assets/fallback (checked-in "UI not built" page)
   web/                        the client: src/client, public/, vite/tailwind/postcss config,
                               package.json trimmed to client deps, client tests
   testdata/                   fixture repos (scripted), golden JSON shared by Go + TS tests
@@ -127,15 +128,14 @@ the TS stays for the client. To stop drift:
 - goreleaser: linux/darwin/windows × amd64/arm64, `CGO_ENABLED=0`, `-trimpath
   -s -w`. Before the build hook: `pnpm -C web install --frozen-lockfile && pnpm -C web build`.
 - Artifacts: tarballs/zips + checksums, GitHub Release. No npm wrapper.
-- Plain `go build ./cmd/difit` without the web build should still compile: a
-  checked-in placeholder `internal/web/dist/index.html` says "UI not built,
-  run `make web`".
+- Plain `go build ./cmd/difit` without the web build still compiles and serves
+  `internal/web/assets/fallback/index.html` ("UI not built, run `make web`").
 
 ## Milestones
 
 1. **Skeleton** — go.mod, layout, `web/` moved over, Vite outputs to
-   `internal/web/dist`, embed + static serving, Makefile, CI (go test, vitest, lint).
-   ✅ binary serves the UI shell.
+   `internal/web/assets/dist`, embed + static serving, Makefile, CI (go test, vitest, lint).
+   ✅ binary serves the UI shell. **Done.**
 2. **Diff core** — `types`, `gitdiff` (resolve/merge-base/diff/parse/stdin/
    blob/line-count/revisions/default branch), `generated`.
    ✅ ported git-diff + generated tests pass.
