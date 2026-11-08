@@ -4,7 +4,7 @@ package main
 import (
 	"os"
 
-	"difit-go/internal/cli"
+	"github.com/tdryer/difit-go/internal/cli"
 )
 
 // version is set at build time with -ldflags "-X main.version=...".

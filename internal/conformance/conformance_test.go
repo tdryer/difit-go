@@ -34,7 +34,7 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"difit-go/internal/testrepo"
+	"github.com/tdryer/difit-go/internal/testrepo"
 )
 
 var update = flag.Bool("update", false, "re-record testdata from the reference server (needs DIFIT_REFERENCE)")
@@ -828,8 +828,8 @@ func TestConformance(t *testing.T) {
 	} else if *update {
 		t.Fatal("-update needs DIFIT_REFERENCE")
 	}
-	goBin := buildBinary(t, "difit", "difit-go/cmd/difit")
-	ghBin := buildBinary(t, "gh", "difit-go/internal/conformance/fakegh")
+	goBin := buildBinary(t, "difit", "github.com/tdryer/difit-go/cmd/difit")
+	ghBin := buildBinary(t, "gh", "github.com/tdryer/difit-go/internal/conformance/fakegh")
 	for _, sc := range scenarios() {
 		t.Run(sc.name, func(t *testing.T) {
 			t.Parallel()

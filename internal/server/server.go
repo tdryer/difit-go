@@ -19,11 +19,11 @@ import (
 	"syscall"
 	"time"
 
-	"difit-go/internal/comments"
-	"difit-go/internal/gitdiff"
-	"difit-go/internal/types"
-	"difit-go/internal/userconfig"
-	"difit-go/internal/watcher"
+	"github.com/tdryer/difit-go/internal/comments"
+	"github.com/tdryer/difit-go/internal/gitdiff"
+	"github.com/tdryer/difit-go/internal/types"
+	"github.com/tdryer/difit-go/internal/userconfig"
+	"github.com/tdryer/difit-go/internal/watcher"
 )
 
 // DefaultPort is the first port tried when none is requested.

@@ -9,7 +9,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 
-	"difit-go/internal/comments"
+	"github.com/tdryer/difit-go/internal/comments"
 )
 
 // The agent skills in skills/ tell agents which commands to run; check that

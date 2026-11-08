@@ -14,13 +14,13 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"difit-go/internal/browser"
-	"difit-go/internal/comments"
-	"difit-go/internal/gitdiff"
-	"difit-go/internal/github"
-	"difit-go/internal/server"
-	"difit-go/internal/types"
-	"difit-go/internal/web"
+	"github.com/tdryer/difit-go/internal/browser"
+	"github.com/tdryer/difit-go/internal/comments"
+	"github.com/tdryer/difit-go/internal/gitdiff"
+	"github.com/tdryer/difit-go/internal/github"
+	"github.com/tdryer/difit-go/internal/server"
+	"github.com/tdryer/difit-go/internal/types"
+	"github.com/tdryer/difit-go/internal/web"
 )
 
 // exitError carries an exit status for a failure that was already reported.

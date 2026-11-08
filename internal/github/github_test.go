@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"difit-go/internal/comments"
+	"github.com/tdryer/difit-go/internal/comments"
 )
 
 func comment(id, body, created, updated, login string) map[string]any {

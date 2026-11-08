@@ -6,8 +6,8 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"difit-go/internal/generated"
-	"difit-go/internal/types"
+	"github.com/tdryer/difit-go/internal/generated"
+	"github.com/tdryer/difit-go/internal/types"
 )
 
 type diffFormat int

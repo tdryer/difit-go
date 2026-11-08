@@ -8,8 +8,8 @@ import (
 	"testing"
 	"time"
 
-	"difit-go/internal/testrepo"
-	"difit-go/internal/types"
+	"github.com/tdryer/difit-go/internal/testrepo"
+	"github.com/tdryer/difit-go/internal/types"
 )
 
 const debounce = 50 * time.Millisecond

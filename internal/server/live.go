@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"difit-go/internal/editor"
-	"difit-go/internal/proc"
+	"github.com/tdryer/difit-go/internal/editor"
+	"github.com/tdryer/difit-go/internal/proc"
 )
 
 func launchEditor(command string, args []string) error {

@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"difit-go/internal/gitdiff"
-	"difit-go/internal/types"
+	"github.com/tdryer/difit-go/internal/gitdiff"
+	"github.com/tdryer/difit-go/internal/types"
 )
 
 func (s *Server) handleDiff(w http.ResponseWriter, r *http.Request) {

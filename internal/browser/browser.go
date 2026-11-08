@@ -8,7 +8,7 @@ import (
 	"runtime"
 	"strings"
 
-	"difit-go/internal/proc"
+	"github.com/tdryer/difit-go/internal/proc"
 )
 
 // commands lists the openers to try for the current platform, in order.

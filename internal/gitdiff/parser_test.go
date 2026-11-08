@@ -7,8 +7,8 @@ import (
 	"strings"
 	"testing"
 
-	"difit-go/internal/testrepo"
-	"difit-go/internal/types"
+	"github.com/tdryer/difit-go/internal/testrepo"
+	"github.com/tdryer/difit-go/internal/types"
 )
 
 func setupRepo(t *testing.T) (*testrepo.Repo, *Parser) {

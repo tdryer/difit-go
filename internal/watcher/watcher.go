@@ -18,7 +18,7 @@ import (
 
 	"github.com/fsnotify/fsnotify"
 
-	"difit-go/internal/types"
+	"github.com/tdryer/difit-go/internal/types"
 )
 
 type modeConfig struct {

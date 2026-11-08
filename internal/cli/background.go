@@ -15,8 +15,8 @@ import (
 	"syscall"
 	"time"
 
-	"difit-go/internal/proc"
-	"difit-go/internal/server"
+	"github.com/tdryer/difit-go/internal/proc"
+	"github.com/tdryer/difit-go/internal/server"
 )
 
 const (

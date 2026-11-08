@@ -1,4 +1,4 @@
-module difit-go
+module github.com/tdryer/difit-go
 
 go 1.24
 

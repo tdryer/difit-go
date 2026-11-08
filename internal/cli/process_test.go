@@ -19,7 +19,7 @@ import (
 	"testing"
 	"time"
 
-	"difit-go/internal/testrepo"
+	"github.com/tdryer/difit-go/internal/testrepo"
 )
 
 var (
@@ -41,7 +41,7 @@ func binary(t *testing.T) string {
 			return
 		}
 		binPath = filepath.Join(dir, "difit")
-		out, err := exec.Command("go", "build", "-o", binPath, "difit-go/cmd/difit").CombinedOutput()
+		out, err := exec.Command("go", "build", "-o", binPath, "github.com/tdryer/difit-go/cmd/difit").CombinedOutput()
 		if err != nil {
 			buildErr = err
 			t.Logf("%s", out)

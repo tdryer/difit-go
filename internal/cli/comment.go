@@ -14,7 +14,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"difit-go/internal/comments"
+	"github.com/tdryer/difit-go/internal/comments"
 )
 
 var httpClient = &http.Client{Timeout: 30 * time.Second}

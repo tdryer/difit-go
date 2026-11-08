@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"difit-go/internal/types"
+	"github.com/tdryer/difit-go/internal/types"
 )
 
 func TestResolveDiffSelection(t *testing.T) {

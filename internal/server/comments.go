@@ -7,8 +7,8 @@ import (
 	"math"
 	"net/http"
 
-	"difit-go/internal/comments"
-	"difit-go/internal/types"
+	"github.com/tdryer/difit-go/internal/comments"
+	"github.com/tdryer/difit-go/internal/types"
 )
 
 func (s *Server) sessionLocked(sel types.DiffSelection) *commentSession {

@@ -18,8 +18,8 @@ import (
 	"strings"
 	"time"
 
-	"difit-go/internal/collate"
-	"difit-go/internal/types"
+	"github.com/tdryer/difit-go/internal/collate"
+	"github.com/tdryer/difit-go/internal/types"
 )
 
 const idAlphabet = "abcdefghijklmnopqrstuvwxyz0123456789"

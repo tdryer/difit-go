@@ -13,8 +13,8 @@ import (
 	"strconv"
 	"strings"
 
-	"difit-go/internal/collate"
-	"difit-go/internal/types"
+	"github.com/tdryer/difit-go/internal/collate"
+	"github.com/tdryer/difit-go/internal/types"
 )
 
 type PullRequest struct {

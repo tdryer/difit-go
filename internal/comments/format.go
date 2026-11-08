@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"strings"
 
-	"difit-go/internal/types"
+	"github.com/tdryer/difit-go/internal/types"
 )
 
 var suggestionPattern = regexp.MustCompile("```suggestion\\n((?s:.*?))```")

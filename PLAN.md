@@ -26,7 +26,7 @@ PATH (same as today), and `gh` for `--pr`.
 
 ```
 difit-go/
-  go.mod                      module difit-go (rename once a remote exists)
+  go.mod                      module github.com/tdryer/difit-go
   cmd/difit/main.go           entrypoint
   internal/
     cli/                      flag parsing, arg resolution, stdin, untracked prompt, background, `comment` subcommand

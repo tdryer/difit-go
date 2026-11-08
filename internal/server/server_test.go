@@ -19,8 +19,8 @@ import (
 	"testing/fstest"
 	"time"
 
-	"difit-go/internal/testrepo"
-	"difit-go/internal/types"
+	"github.com/tdryer/difit-go/internal/testrepo"
+	"github.com/tdryer/difit-go/internal/types"
 )
 
 type harness struct {

@@ -12,9 +12,9 @@ import (
 	"sync"
 	"time"
 
-	"difit-go/internal/collate"
-	"difit-go/internal/generated"
-	"difit-go/internal/types"
+	"github.com/tdryer/difit-go/internal/collate"
+	"github.com/tdryer/difit-go/internal/generated"
+	"github.com/tdryer/difit-go/internal/types"
 )
 
 const (
