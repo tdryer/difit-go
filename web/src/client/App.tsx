@@ -26,7 +26,6 @@ import { CommentsListModal } from './components/CommentsListModal';
 import { DiffQuickMenu } from './components/DiffQuickMenu';
 import { DiffViewer } from './components/DiffViewer';
 import { FileList } from './components/FileList';
-import { GitHubIcon } from './components/GitHubIcon';
 import { HelpModal } from './components/HelpModal';
 import { Logo } from './components/Logo';
 import { ReloadButton } from './components/ReloadButton';
@@ -1234,6 +1233,16 @@ function App() {
               >
                 {isFileTreeOpen ? <PanelLeftClose size={18} /> : <PanelLeft size={18} />}
               </button>
+              {!isMobile && (
+                <button
+                  onClick={() => setIsHelpOpen(true)}
+                  className="p-2 text-github-text-secondary hover:text-github-text-primary hover:bg-github-bg-tertiary rounded transition-colors"
+                  title="Keyboard shortcuts (Shift+?)"
+                  aria-label="Keyboard shortcuts"
+                >
+                  <Keyboard size={18} />
+                </button>
+              )}
               <button
                 onClick={() => setIsSettingsOpen(true)}
                 className="p-2 text-github-text-secondary hover:text-github-text-primary hover:bg-github-bg-tertiary rounded transition-colors"
@@ -1435,28 +1444,6 @@ function App() {
                   selectedFileIndex={cursor?.fileIndex ?? null}
                 />
               </div>
-              {!isMobile && (
-                <div className="p-4 border-t border-github-border flex justify-between items-center">
-                  <button
-                    onClick={() => setIsHelpOpen(true)}
-                    className="flex items-center gap-1.5 text-github-text-secondary hover:text-github-text-primary transition-colors"
-                    title="Keyboard shortcuts (Shift+?)"
-                  >
-                    <Keyboard size={16} />
-                    <span className="text-sm">Shortcuts</span>
-                  </button>
-                  <a
-                    href="https://github.com/yoshiko-pg/difit"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-github-text-secondary hover:text-github-text-primary transition-colors"
-                    title="View on GitHub"
-                  >
-                    <span className="text-sm">Star on GitHub</span>
-                    <GitHubIcon style={{ height: '18px', width: '18px' }} />
-                  </a>
-                </div>
-              )}
             </aside>
           </div>
 

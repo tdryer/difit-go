@@ -138,7 +138,7 @@ func TestValidationErrors(t *testing.T) {
 func TestVersion(t *testing.T) {
 	for _, flag := range []string{"-v", "--version"} {
 		code, stdout, _ := runApp(t, "", stdinTTY, flag)
-		if code != 0 || stdout != "1.2.3\n" {
+		if code != 0 || stdout != "difit-go 1.2.3\n" {
 			t.Errorf("%s: %d %q", flag, code, stdout)
 		}
 	}

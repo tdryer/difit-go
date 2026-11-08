@@ -100,7 +100,9 @@ Arguments:
 	cmd.SetIn(a.stdin)
 	cmd.SetOut(a.stdout)
 	cmd.SetErr(a.stderr)
-	cmd.SetVersionTemplate("{{.Version}}\n")
+	// Name the fork so it isn't mistaken for upstream difit, which installs
+	// the same command.
+	cmd.SetVersionTemplate("difit-go {{.Version}}\n")
 	cmd.Flags().BoolP("version", "v", false, "output the version number")
 
 	f := cmd.Flags()
@@ -283,6 +285,7 @@ func (a *app) runMain(cmd *cobra.Command, args []string, opts options) error {
 		CommentImports: commentImports,
 		ContextLines:   -1,
 		Static:         web.FS(),
+		Version:        a.version,
 		Stdout:         a.stdout,
 		Stderr:         a.stderr,
 		OpenURL:        browser.Open,

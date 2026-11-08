@@ -52,6 +52,8 @@ type Options struct {
 	RepoPath         string
 	ContextLines     int // negative means git's default
 	Static           fs.FS
+	// Version is reported by /api/version.
+	Version string
 
 	Stdout, Stderr io.Writer
 	// OpenURL opens the browser; nil disables it.
@@ -370,6 +372,7 @@ func (s *Server) routes() http.Handler {
 	mux.HandleFunc("POST /api/open-in-editor", s.handleOpenInEditor)
 	mux.HandleFunc("GET /api/watch", s.handleWatch)
 	mux.HandleFunc("GET /api/heartbeat", s.handleHeartbeat)
+	mux.HandleFunc("GET /api/version", s.handleVersion)
 	mux.HandleFunc("OPTIONS /", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusNoContent)
 	})
@@ -405,6 +408,17 @@ func Listen(host string, port int, logf func(format string, args ...any)) (net.L
 		logf("Port %d is busy, trying %d...\n", port, port+1)
 		port++
 	}
+}
+
+type versionResponse struct {
+	Name    string `json:"name"`
+	Version string `json:"version"`
+}
+
+// handleVersion identifies the server as difit-go, not upstream difit. It
+// is a difit-go addition to the API.
+func (s *Server) handleVersion(w http.ResponseWriter, r *http.Request) {
+	writeJSON(w, http.StatusOK, versionResponse{Name: "difit-go", Version: s.opts.Version})
 }
 
 func (s *Server) handleGetUserSettings(w http.ResponseWriter, r *http.Request) {

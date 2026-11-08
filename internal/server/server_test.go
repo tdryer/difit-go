@@ -516,6 +516,13 @@ func TestUserSettings(t *testing.T) {
 	}
 }
 
+func TestVersion(t *testing.T) {
+	h := start(t, Options{Version: "1.2.3"})
+	if resp := h.json("GET", "/api/version", "", 200); resp["name"] != "difit-go" || resp["version"] != "1.2.3" {
+		t.Fatalf("%v", resp)
+	}
+}
+
 func TestStdinMode(t *testing.T) {
 	diff := "diff --git a/x.txt b/x.txt\n--- a/x.txt\n+++ b/x.txt\n@@ -1 +1 @@\n-a\n+b\n"
 	h := start(t, Options{StdinDiff: diff, RepoPath: t.TempDir()})

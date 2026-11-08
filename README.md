@@ -74,6 +74,8 @@ them too. They expect the `difit` binary on `PATH`.
 - `--background` hands the server info from the detached process to the
   parent over a pipe rather than Node IPC; the printed JSON is the same.
 - `--help` output uses cobra's layout.
+- `--version` prints `difit-go <version>`, and the keyboard-shortcuts dialog
+  shows the same; `GET /api/version` reports it. The UI has no GitHub link.
 
 ## Building
 
