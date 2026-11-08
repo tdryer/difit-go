@@ -278,6 +278,15 @@ func (s *Service) handleEvent(w *fsnotify.Watcher, ev fsnotify.Event, workingTre
 	if ev.Op == fsnotify.Chmod || s.isIgnored(ev.Name) || s.isIgnoredDir(ev.Name) {
 		return
 	}
+	// Windows and kqueue also report a directory as written when entries
+	// inside it change. Those entries have events of their own, or are
+	// deliberately unwatched (.git internals, gitignored directories), so
+	// the directory event adds nothing and would bypass the ignore rules.
+	if ev.Has(fsnotify.Write) && !ev.Has(fsnotify.Create) {
+		if info, err := os.Stat(ev.Name); err == nil && info.IsDir() {
+			return
+		}
+	}
 	if ev.Has(fsnotify.Create) {
 		if info, err := os.Stat(ev.Name); err == nil && info.IsDir() && !s.isIgnoredDir(ev.Name) {
 			if !workingTree || !s.checkIgnored([]string{ev.Name})[ev.Name] {

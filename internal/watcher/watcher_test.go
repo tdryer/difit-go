@@ -47,6 +47,23 @@ func expectNoEvent(t *testing.T, ch <-chan []byte) {
 	}
 }
 
+// settle drains the reloads that follow one change. Windows may report a
+// single write as several modifications spread over more than the 50ms test
+// debounce, which is not what the negative checks are about.
+func settle(t *testing.T, ch <-chan []byte) {
+	t.Helper()
+	for {
+		select {
+		case data := <-ch:
+			if ev := decode(t, data); ev.Type != "reload" {
+				t.Fatalf("unexpected event %+v", ev)
+			}
+		case <-time.After(400 * time.Millisecond):
+			return
+		}
+	}
+}
+
 func start(t *testing.T, mode types.DiffMode) (*testrepo.Repo, *Service, <-chan []byte, *int) {
 	r := testrepo.New(t)
 	r.Write(".gitignore", "ignored/\n*.log\n")
@@ -77,6 +94,7 @@ func TestWorkingModeReloadsOnFileChange(t *testing.T) {
 		ev.Message != "Changes detected in working mode" || *invalidations != 1 {
 		t.Fatalf("reload event %+v (invalidations %d)", ev, *invalidations)
 	}
+	settle(t, ch)
 
 	r.Write("debug.log", "x")
 	r.Write("ignored/y.txt", "y")

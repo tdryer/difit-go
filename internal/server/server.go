@@ -398,7 +398,8 @@ func Listen(host string, port int, logf func(format string, args ...any)) (net.L
 			}
 			return ln, fmt.Sprintf("http://%s:%d", displayHost, port), nil
 		}
-		if !errors.Is(err, syscall.EADDRINUSE) {
+		// Windows reports WSAEADDRINUSE (10048), not syscall.EADDRINUSE.
+		if !errors.Is(err, syscall.EADDRINUSE) && !errors.Is(err, syscall.Errno(10048)) {
 			return nil, "", fmt.Errorf("Failed to launch a server: %w", err)
 		}
 		logf("Port %d is busy, trying %d...\n", port, port+1)

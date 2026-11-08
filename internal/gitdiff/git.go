@@ -5,6 +5,7 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
+	"os"
 	"os/exec"
 	"strings"
 )
@@ -52,6 +53,10 @@ func (g Git) RunLimited(limit int, args ...string) ([]byte, error) {
 func (g Git) run(limit int, args ...string) ([]byte, error) {
 	cmd := exec.Command("git", args...)
 	cmd.Dir = g.Dir
+	// Keep commands like `git status` from refreshing the index as a side
+	// effect: that write would wake the file watcher, and on Windows it
+	// happens on almost every run.
+	cmd.Env = append(os.Environ(), "GIT_OPTIONAL_LOCKS=0")
 	var stdout bytes.Buffer
 	var stderr bytes.Buffer
 	var out interface{ Write([]byte) (int, error) } = &stdout
