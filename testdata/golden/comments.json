@@ -1,0 +1,94 @@
+{
+  "output": [
+    {
+      "name": "single line, range, old side, replies",
+      "threads": [
+        {
+          "id": "t1",
+          "filePath": "src/a.ts",
+          "createdAt": "2024-01-01T00:00:00.000Z",
+          "updatedAt": "2024-01-01T00:00:00.000Z",
+          "position": { "side": "new", "line": 10 },
+          "messages": [
+            { "id": "t1", "body": "Fix this", "createdAt": "2024-01-01T00:00:00.000Z", "updatedAt": "2024-01-01T00:00:00.000Z" },
+            { "id": "r1", "body": "Done", "author": "  AI ", "createdAt": "2024-01-02T00:00:00.000Z", "updatedAt": "2024-01-02T00:00:00.000Z" },
+            { "id": "r2", "body": "Thanks", "author": "   ", "createdAt": "2024-01-03T00:00:00.000Z", "updatedAt": "2024-01-03T00:00:00.000Z" }
+          ]
+        },
+        {
+          "id": "t2",
+          "filePath": "",
+          "createdAt": "2024-01-01T00:00:00.000Z",
+          "updatedAt": "2024-01-01T00:00:00.000Z",
+          "position": { "side": "old", "line": { "start": 3, "end": 7 } },
+          "messages": [
+            { "id": "t2", "body": "Why removed?\nSecond line", "createdAt": "2024-01-01T00:00:00.000Z", "updatedAt": "2024-01-01T00:00:00.000Z" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "suggestions with and without code snapshot",
+      "threads": [
+        {
+          "id": "s1",
+          "filePath": "src/b.ts",
+          "createdAt": "2024-01-01T00:00:00.000Z",
+          "updatedAt": "2024-01-01T00:00:00.000Z",
+          "position": { "side": "new", "line": 5 },
+          "codeSnapshot": { "content": "const old = 1;" },
+          "messages": [
+            { "id": "s1", "body": "Please refactor:\n```suggestion\nconst x = 2;\n```\nand also\n```suggestion\nconst y = 3;\n\n```\ntrailing", "createdAt": "2024-01-01T00:00:00.000Z", "updatedAt": "2024-01-01T00:00:00.000Z" }
+          ]
+        },
+        {
+          "id": "s2",
+          "filePath": "src/c.ts",
+          "createdAt": "2024-01-01T00:00:00.000Z",
+          "updatedAt": "2024-01-01T00:00:00.000Z",
+          "position": { "side": "new", "line": { "start": 1, "end": 2 } },
+          "messages": [
+            { "id": "s2", "body": "```suggestion\nonly\n```", "createdAt": "2024-01-01T00:00:00.000Z", "updatedAt": "2024-01-01T00:00:00.000Z" },
+            { "id": "s3", "body": "", "createdAt": "2024-01-01T00:00:00.000Z", "updatedAt": "2024-01-01T00:00:00.000Z" }
+          ]
+        }
+      ]
+    }
+  ],
+  "imports": [
+    { "name": "single thread", "input": { "type": "thread", "filePath": "src/a.ts", "position": { "side": "new", "line": 10 }, "body": "  Review  " } },
+    {
+      "name": "array with all fields",
+      "input": [
+        {
+          "type": "thread", "id": "thread-1", "filePath": "src/a.ts",
+          "position": { "side": "new", "line": { "start": 10, "end": 12 } },
+          "body": "Root <b>&</b>", "author": "AI",
+          "createdAt": "2024-01-01T00:00:00.000Z", "updatedAt": "2024-01-02T00:00:00Z",
+          "codeSnapshot": { "content": "const value = 1;", "language": "ts" }
+        },
+        { "type": "reply", "filePath": "src/a.ts", "position": { "side": "old", "line": 3.0 }, "body": "Reply", "codeSnapshot": { "content": "" } }
+      ]
+    },
+    { "name": "malformed json", "raw": "{" },
+    { "name": "empty file path", "input": { "type": "thread", "filePath": "", "position": { "side": "new", "line": 0 }, "body": "" } },
+    { "name": "bad type", "input": { "type": "note", "filePath": "a", "position": { "side": "new", "line": 1 }, "body": "x" } },
+    { "name": "bad side", "input": { "type": "thread", "filePath": "a", "position": { "side": "left", "line": 1 }, "body": "x" } },
+    { "name": "reversed range", "input": { "type": "thread", "filePath": "a", "position": { "side": "new", "line": { "start": 5, "end": 2 } }, "body": "x" } },
+    { "name": "fractional line", "input": { "type": "thread", "filePath": "a", "position": { "side": "new", "line": 1.5 }, "body": "x" } },
+    { "name": "blank body", "input": { "type": "thread", "filePath": "a", "position": { "side": "new", "line": 1 }, "body": "   " } },
+    { "name": "null id", "input": { "type": "thread", "id": null, "filePath": "a", "position": { "side": "new", "line": 1 }, "body": "x" } },
+    { "name": "bad timestamp", "input": { "type": "thread", "filePath": "a", "position": { "side": "new", "line": 1 }, "body": "x", "createdAt": "yesterday" } },
+    { "name": "bad language", "input": { "type": "thread", "filePath": "a", "position": { "side": "new", "line": 1 }, "body": "x", "codeSnapshot": { "content": "c", "language": 1 } } },
+    { "name": "not an object", "input": [1] }
+  ],
+  "editorArgs": [
+    { "template": "-g %file:%line" },
+    { "template": "  --no-wait   +%line   %file  " },
+    { "template": "-l %line \"%file\"" },
+    { "template": "'single quoted \\s' \"double \\\"quoted\\\" \\\\ \\s\"" },
+    { "template": "a\"b c\"d 'e f'g" },
+    { "template": "" },
+    { "template": "unterminated \"quote here" }
+  ]
+}

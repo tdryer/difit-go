@@ -1,0 +1,145 @@
+{
+  "output": [
+    {
+      "name": "single line, range, old side, replies",
+      "text": "\n📝 Comments from review session:\n==================================================\nsrc/a.ts:L10\nFix this\nReply 1 (AI)\nDone\nReply 2 (Unknown)\nThanks\n=====\n<unknown file>:L3-L7 (old)\nWhy removed?\nSecond line\n==================================================\nTotal comments: 2\n"
+    },
+    {
+      "name": "suggestions with and without code snapshot",
+      "text": "\n📝 Comments from review session:\n==================================================\nsrc/b.ts:L5\nPlease refactor:\nORIGINAL:\n```\nconst old = 1;\n```\nSUGGESTED:\n```\nconst x = 2;\n```\nand also\nORIGINAL:\n```\nconst old = 1;\n```\nSUGGESTED:\n```\nconst y = 3;\n\n```\ntrailing\n=====\nsrc/c.ts:L1-L2\nSUGGESTED:\n```\nonly\n```\nReply 1 (Unknown)\n==================================================\nTotal comments: 2\n"
+    }
+  ],
+  "imports": [
+    {
+      "name": "single thread",
+      "serialized": "[{\"type\":\"thread\",\"filePath\":\"src/a.ts\",\"position\":{\"side\":\"new\",\"line\":10},\"body\":\"Review\"}]",
+      "importId": "5b0780c63c4cae22f4d080ece49974f8f5fafe09c5981bcf6242a04d4bd0c2ac"
+    },
+    {
+      "name": "array with all fields",
+      "serialized": "[{\"type\":\"thread\",\"id\":\"thread-1\",\"filePath\":\"src/a.ts\",\"position\":{\"side\":\"new\",\"line\":{\"start\":10,\"end\":12}},\"body\":\"Root <b>&</b>\",\"author\":\"AI\",\"createdAt\":\"2024-01-01T00:00:00.000Z\",\"updatedAt\":\"2024-01-02T00:00:00Z\",\"codeSnapshot\":{\"content\":\"const value = 1;\",\"language\":\"ts\"}},{\"type\":\"reply\",\"filePath\":\"src/a.ts\",\"position\":{\"side\":\"old\",\"line\":3},\"body\":\"Reply\",\"codeSnapshot\":{\"content\":\"\"}}]",
+      "importId": "70cf9995bd763afdcb9dbff68fe5f159886228318b95fcf54264c5accace849a"
+    },
+    {
+      "name": "malformed json",
+      "error": "Invalid --comment JSON"
+    },
+    {
+      "name": "empty file path",
+      "error": "Invalid comment import field: filePath"
+    },
+    {
+      "name": "bad type",
+      "error": "Invalid comment import field: type"
+    },
+    {
+      "name": "bad side",
+      "error": "Invalid comment import field: position.side"
+    },
+    {
+      "name": "reversed range",
+      "error": "Invalid comment import field: position.line"
+    },
+    {
+      "name": "fractional line",
+      "error": "Invalid comment import field: position.line"
+    },
+    {
+      "name": "blank body",
+      "error": "Invalid comment import field: body"
+    },
+    {
+      "name": "null id",
+      "error": "Invalid comment import field: id"
+    },
+    {
+      "name": "bad timestamp",
+      "error": "Invalid comment import field: createdAt"
+    },
+    {
+      "name": "bad language",
+      "error": "Invalid comment import field: codeSnapshot.language"
+    },
+    {
+      "name": "not an object",
+      "error": "Comment import must be an object"
+    }
+  ],
+  "editorArgs": [
+    {
+      "template": "-g %file:%line",
+      "args": [
+        "-g",
+        "%file:%line"
+      ],
+      "spawnArgs": [
+        "-g",
+        "/repo/dir with space/file.ts:42"
+      ]
+    },
+    {
+      "template": "  --no-wait   +%line   %file  ",
+      "args": [
+        "--no-wait",
+        "+%line",
+        "%file"
+      ],
+      "spawnArgs": [
+        "--no-wait",
+        "+42",
+        "/repo/dir with space/file.ts"
+      ]
+    },
+    {
+      "template": "-l %line \"%file\"",
+      "args": [
+        "-l",
+        "%line",
+        "%file"
+      ],
+      "spawnArgs": [
+        "-l",
+        "42",
+        "/repo/dir with space/file.ts"
+      ]
+    },
+    {
+      "template": "'single quoted \\s' \"double \\\"quoted\\\" \\\\ \\s\"",
+      "args": [
+        "single quoted \\s",
+        "double \"quoted\" \\ \\s"
+      ],
+      "spawnArgs": [
+        "single quoted \\s",
+        "double \"quoted\" \\ \\s"
+      ]
+    },
+    {
+      "template": "a\"b c\"d 'e f'g",
+      "args": [
+        "ab cd",
+        "e fg"
+      ],
+      "spawnArgs": [
+        "ab cd",
+        "e fg"
+      ]
+    },
+    {
+      "template": "",
+      "args": [],
+      "spawnArgs": []
+    },
+    {
+      "template": "unterminated \"quote here",
+      "args": [
+        "unterminated",
+        "quote here"
+      ],
+      "spawnArgs": [
+        "unterminated",
+        "quote here"
+      ]
+    }
+  ]
+}
