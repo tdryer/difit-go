@@ -61,10 +61,9 @@ The [`skills/`](skills) directory has two agent skills, ported from difit:
 - `difit-review`: review a specific diff or PR and show the findings as
   comments inside the difit viewer, when the user explicitly asks for difit
 
-Install them with `npx skills add tdryer/difit-go`, or copy the skill
-directories into your agent's skills directory (for Claude Code,
-`~/.claude/skills/`; release archives include them too). They expect the
-`difit` binary on `PATH`.
+To install them, copy the skill directories into your agent's skills
+directory (for Claude Code, `~/.claude/skills/`); release archives include
+them too. They expect the `difit` binary on `PATH`.
 
 ## Differences from difit
 
