@@ -2,7 +2,7 @@ PNPM ?= pnpm
 VERSION ?= $(shell git describe --tags --always --dirty 2>/dev/null || echo dev)
 LDFLAGS := -s -w -X main.version=$(VERSION)
 
-.PHONY: all web build test test-go test-web check fmt clean
+.PHONY: all web build test test-go test-web conformance e2e release-snapshot check fmt clean
 
 all: web build
 
@@ -23,6 +23,20 @@ test-go:
 
 test-web: web/node_modules
 	$(PNPM) -C web test
+
+# Compares the Go server's API with upstream difit's Node server. Needs a built
+# checkout of upstream difit v5.0.12 (see .github/workflows/ci.yml).
+DIFIT_REFERENCE ?= $(CURDIR)/difit/dist/cli/index.js
+conformance:
+	DIFIT_REFERENCE=$(DIFIT_REFERENCE) go test -count=1 -v ./internal/conformance
+
+# Drives the UI of bin/difit in Chromium; needs the playwright package
+# (NODE_PATH may point at a global install).
+e2e: all
+	node e2e/smoke.cjs bin/difit
+
+release-snapshot:
+	goreleaser release --snapshot --clean
 
 check: web/node_modules
 	go vet ./...
