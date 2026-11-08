@@ -123,4 +123,5 @@ Releases are built by goreleaser when a `v*` tag is pushed.
 
 ## License
 
-MIT; see [LICENSE](LICENSE). Derived from difit by yoshiko-pg.
+MIT; see [LICENSE](LICENSE). Derived from
+[difit](https://github.com/yoshiko-pg/difit) by yoshiko-pg.
