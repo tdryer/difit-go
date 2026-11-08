@@ -16,6 +16,8 @@ import {
   getThemesForResolvedTheme,
   isSyntaxThemeForResolvedTheme,
 } from '../utils/themeLoader';
+import { useVersionInfo } from '../hooks/useVersionInfo';
+
 import { Tooltip } from './Tooltip';
 
 interface EditorSettings {
@@ -95,6 +97,7 @@ export function SettingsModal({ isOpen, onClose, settings, onSettingsChange }: S
     formatAutoViewedPatterns(settings.autoViewedPatterns),
   );
   const [activeSection, setActiveSection] = useState<SettingsSection>('appearance');
+  const versionInfo = useVersionInfo(isOpen);
   const { enableScope, disableScope } = useHotkeysContext();
 
   // Manage scopes when modal opens/closes
@@ -193,7 +196,7 @@ export function SettingsModal({ isOpen, onClose, settings, onSettingsChange }: S
         <div className="flex flex-col sm:flex-row min-h-[420px]">
           <nav
             aria-label="Settings sections"
-            className="sm:w-40 border-b sm:border-b-0 sm:border-r border-github-border px-3 py-2"
+            className="sm:w-40 border-b sm:border-b-0 sm:border-r border-github-border px-3 py-2 flex flex-col"
           >
             <div className="flex sm:flex-col gap-1">
               {SETTINGS_SECTIONS.map((section) => {
@@ -215,6 +218,11 @@ export function SettingsModal({ isOpen, onClose, settings, onSettingsChange }: S
                 );
               })}
             </div>
+            {versionInfo && (
+              <p className="sm:mt-auto px-3 py-2 text-xs font-mono text-github-text-muted">
+                {versionInfo.name} {versionInfo.version}
+              </p>
+            )}
           </nav>
 
           <div className="flex-1 p-4 sm:p-6 overflow-y-auto">

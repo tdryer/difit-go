@@ -1,5 +1,5 @@
 import { X } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useHotkeys, useHotkeysContext } from 'react-hotkeys-hook';
 
 interface HelpModalProps {
@@ -7,27 +7,8 @@ interface HelpModalProps {
   onClose: () => void;
 }
 
-interface VersionInfo {
-  name: string;
-  version: string;
-}
-
-// Shown in the modal so bug reports can be told apart from upstream difit.
-function useVersionInfo(enabled: boolean): VersionInfo | null {
-  const [info, setInfo] = useState<VersionInfo | null>(null);
-  useEffect(() => {
-    if (!enabled || info) return;
-    void fetch('/api/version')
-      .then((response) => (response.ok ? (response.json() as Promise<VersionInfo>) : null))
-      .then(setInfo)
-      .catch(() => {});
-  }, [enabled, info]);
-  return info;
-}
-
 export function HelpModal({ isOpen, onClose }: HelpModalProps) {
   const { enableScope, disableScope } = useHotkeysContext();
-  const versionInfo = useVersionInfo(isOpen);
 
   // Handle Escape key to close modal
   useHotkeys('escape', () => onClose(), { enabled: isOpen }, [onClose, isOpen]);
@@ -55,14 +36,7 @@ export function HelpModal({ isOpen, onClose }: HelpModalProps) {
       <div className="absolute inset-0 bg-black/50" onClick={onClose} />
       <div className="relative bg-github-bg-primary border border-github-border rounded-lg shadow-lg max-w-4xl w-full mx-4 max-h-[80vh] overflow-y-auto">
         <div className="sticky top-0 bg-github-bg-primary border-b border-github-border px-6 py-4 flex items-center justify-between">
-          <div className="flex items-baseline gap-3">
-            <h2 className="text-lg font-semibold text-github-text-primary">Keyboard Shortcuts</h2>
-            {versionInfo && (
-              <span className="text-xs font-mono text-github-text-muted">
-                {versionInfo.name} {versionInfo.version}
-              </span>
-            )}
-          </div>
+          <h2 className="text-lg font-semibold text-github-text-primary">Keyboard Shortcuts</h2>
           <button
             onClick={onClose}
             className="text-github-text-secondary hover:text-github-text-primary transition-colors"

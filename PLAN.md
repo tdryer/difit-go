@@ -175,5 +175,5 @@ the TS stays for the client. To stop drift:
 - Background handshake over stdout instead of Node IPC; errors from the
   child are not prefixed with `Error:` twice.
 - `--help` uses cobra's layout.
-- `--version`, the shortcuts dialog and `GET /api/version` name difit-go; the
+- `--version`, the settings dialog and `GET /api/version` name difit-go; the
   UI's "Star on GitHub" link is gone, so bugs aren't reported upstream.

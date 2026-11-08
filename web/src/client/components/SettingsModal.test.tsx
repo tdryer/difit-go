@@ -33,6 +33,24 @@ const baseSettings = {
 };
 
 describe('SettingsModal', () => {
+  it('shows the difit-go version from the server', async () => {
+    vi.mocked(global.fetch).mockResolvedValueOnce(
+      Response.json({ name: 'difit-go', version: '1.2.3' }),
+    );
+    render(
+      <SettingsModal
+        isOpen={true}
+        onClose={vi.fn()}
+        settings={baseSettings}
+        onSettingsChange={vi.fn()}
+      />,
+      { wrapper },
+    );
+
+    expect(await screen.findByText('difit-go 1.2.3')).toBeInTheDocument();
+    expect(global.fetch).toHaveBeenCalledWith('/api/version');
+  });
+
   it('shows appearance settings by default and moves editor selection into the system section', () => {
     render(
       <SettingsModal
