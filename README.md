@@ -11,7 +11,8 @@ no npm package or VS Code extension.
 ## Install
 
 Download an archive for your platform (Linux, macOS, Windows; amd64 and
-arm64) from the releases page and put `difit` on your `PATH`. At runtime it
+arm64) from the [releases page](https://github.com/tdryer/difit-go/releases)
+and put `difit` on your `PATH`. At runtime it
 needs only `git` (and the GitHub CLI `gh` for `--pr`).
 
 Or build from source (see [Building](#building)).
@@ -50,6 +51,20 @@ difit comment resolve <thread-id>
 
 User settings are stored in `~/.difit/config.json` (override the directory
 with `DIFIT_CONFIG_DIR`).
+
+## Calling from agents
+
+The [`skills/`](skills) directory has two agent skills, ported from difit:
+
+- `difit`: ask the user for a review in the difit viewer, when the user
+  explicitly opts in to difit
+- `difit-review`: review a specific diff or PR and show the findings as
+  comments inside the difit viewer, when the user explicitly asks for difit
+
+Install them with `npx skills add tdryer/difit-go`, or copy the skill
+directories into your agent's skills directory (for Claude Code,
+`~/.claude/skills/`; release archives include them too). They expect the
+`difit` binary on `PATH`.
 
 ## Differences from difit
 
@@ -103,6 +118,7 @@ Releases are built by goreleaser when a `v*` tag is pushed.
 - `testdata/golden` — fixtures shared by the Go and TypeScript tests
 - `internal/conformance` — API conformance test and responses recorded from upstream difit
 - `e2e/` — Playwright smoke tests
+- `skills/` — agent skills for driving difit
 
 ## License
 
