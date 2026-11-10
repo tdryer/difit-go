@@ -69,6 +69,8 @@ them too. They expect the `difit` binary on `PATH`.
 
 ## Differences from difit
 
+- Added and removed lines use subtler GitHub-style backgrounds in both themes,
+  with stronger word-level highlights.
 - `Ctrl+C` prints the review comments in stdin mode too.
 - Malformed JSON request bodies get a JSON `400` response instead of an HTML
   error page; request bodies are limited to 10 MB.

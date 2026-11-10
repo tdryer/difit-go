@@ -150,6 +150,48 @@ async function addCommentInUI(page, lineText, body) {
 }
 
 const tests = {
+  async 'diff line colors'() {
+    const repo = createRepo();
+    const difit = await startDifit(repo, []);
+    await withPage('diff-line-colors', async (page) => {
+      await page.goto(`http://localhost:${difit.port}/`);
+      await page.getByText('"Hello, difit"').first().waitFor();
+
+      for (const { theme, addition, deletion } of [
+        { theme: 'Dark', addition: 'rgb(18, 38, 30)', deletion: 'rgb(37, 23, 28)' },
+        { theme: 'Light', addition: 'rgb(218, 251, 225)', deletion: 'rgb(255, 235, 233)' },
+      ]) {
+        await page.getByTitle('Settings', { exact: true }).click();
+        await page.getByRole('button', { name: theme, exact: true }).click();
+        await page
+          .getByRole('heading', { name: 'Settings', exact: true })
+          .locator('..')
+          .getByRole('button')
+          .click();
+
+        for (const mode of ['Unified', 'Split']) {
+          await page.getByRole('button', { name: mode, exact: true }).click();
+          for (const [selector, expected] of [
+            ['.bg-diff-addition-bg', addition],
+            ['.bg-diff-deletion-bg', deletion],
+          ]) {
+            await page.waitForFunction(
+              ({ selector, expected }) => {
+                const elements = [...document.querySelectorAll(selector)];
+                return (
+                  elements.length > 0 &&
+                  elements.every((element) => getComputedStyle(element).backgroundColor === expected)
+                );
+              },
+              { selector, expected },
+            );
+          }
+        }
+      }
+    });
+    await expectExitWithOutput(difit, []);
+  },
+
   // The HEAD commit: a new commit offers a refresh, comments come from both
   // the UI and the CLI, and closing the tab prints them.
   async 'commit review'() {
