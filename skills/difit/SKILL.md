@@ -16,7 +16,6 @@ difit opens an external browser UI and starts a long-running local server, so la
 ## Overview
 
 This skill requests a code review from the user using difit.
-Run the `difit` binary from `PATH`. If `command -v difit` fails, tell the user that difit is not installed (it ships as a standalone binary from https://github.com/tdryer/difit-go/releases) and stop; do not substitute `npx difit`, which runs a different, Node-based program.
 
 If the user leaves review comments, they are printed to stdout when difit exits.
 When review comments are returned, continue work and address them.

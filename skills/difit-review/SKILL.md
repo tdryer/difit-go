@@ -17,7 +17,6 @@ difit opens an external browser UI and starts a long-running local server, so la
 
 This skill launches a requested git diff in a viewer that is easy for humans to read. At the same time, the agent can attach arbitrary comments via the `--comment` option.
 This comment mechanism is well suited for code review findings and code explanations.
-Run the `difit` binary from `PATH`. If `command -v difit` fails, tell the user that difit is not installed (it ships as a standalone binary from https://github.com/tdryer/difit-go/releases) and stop; do not substitute `npx difit`, which runs a different, Node-based program.
 
 ## Steps
 
