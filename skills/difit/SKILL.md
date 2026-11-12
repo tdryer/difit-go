@@ -17,6 +17,8 @@ difit opens an external browser UI and starts a long-running local server, so la
 
 This skill requests a code review from the user using difit.
 
+Start difit asynchronously, attached to the session. Immediately read startup output with a 1-second timeout (never more than 2 seconds) and show the server URL; do not wait for difit to exit.
+
 If the user leaves review comments, they are printed to stdout when difit exits.
 When review comments are returned, continue work and address them.
 If the server is shut down without comments, treat it as "no review comments were provided." Restarting it is unnecessary.
